@@ -3,7 +3,7 @@
 A repository for the final assignment in ATU Data Representation
 
 Requirements:
-Write a program that demonstrates that you understand creating and consuming RESTful APIs. 
+Write a program that demonstrates that you understand creating and consuming RESTful APIs.
 If you cannot think of a project to do:
 
 - Create a Web application in Flask that has a RESTful API, the application should link to one or more database tables.
@@ -29,13 +29,13 @@ idea 1:
 - start with random player
 - user picks one of five or six items from stats (G, A, Shots, Hits, +/-?)
 - click PLAY to reveal card and win/loss
-- CREATE/UPDATE: if you win you get to the add the card to your collection
+- CREATE/UPDATE: if you win you get to the add the card to your collection, ability to create multiple squads of five?
 - DELETE: can delete cards from your collection
 - AUTH: register to save your cards
-- link more information from Elite Prospects (reqs API key)?
+- link more information from Elite Prospects (reqs API key)? Looks like a bit of hassle getting a key here
 
 idea 2:
 
-- setlist.fm (reqs API key)
+- setlist.fm (reqs API key) called Last.fm, shows you a setlist so you can listen to the songs again? something rubbish like that
 - replicate Bands spreadsheet as DB using setlist.fm data
-- integrate Last.fm (reqs API key) and Spotify (reqs API key)?
+- integrate Last.fm (reqs API key) and Spotify (reqs API key)? Looks like it has a weird authentication method in Last.fm, send artist or song to Spotify playlist?
