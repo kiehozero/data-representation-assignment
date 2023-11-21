@@ -1,9 +1,11 @@
 # data-representation-assignment
+
 A repository for the final assignment in ATU Data Representation
 
 Requirements:
 Write a program that demonstrates that you understand creating and consuming RESTful APIs. 
 If you cannot think of a project to do:
+
 - Create a Web application in Flask that has a RESTful API, the application should link to one or more database tables.
 - You should also create the web pages that can consume the API. I.e. performs CRUD operations on the data.
 
@@ -21,6 +23,7 @@ Plus (each point 0-10%):
 8. Hosted online (e.g. Azure, Pythonanywhere)
 
 idea 1:
+
 - NHL Sportradar (reqs API key)
 - create a Top Trumps game?
 - start with random player
@@ -32,6 +35,7 @@ idea 1:
 - link more information from Elite Prospects (reqs API key)?
 
 idea 2:
+
 - setlist.fm (reqs API key)
 - replicate Bands spreadsheet as DB using setlist.fm data
 - integrate Last.fm (reqs API key) and Spotify (reqs API key)?
