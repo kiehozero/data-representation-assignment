@@ -41,4 +41,5 @@ idea 2:
 - integrate Last.fm (reqs API key) and Spotify (reqs API key)? Looks like it has a weird authentication method in Last.fm, send artist or song to Spotify playlist?
 
 style ideas:
-- https://getbootstrap.com/docs/5.3/customize/color-modes/
+
+- [Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
