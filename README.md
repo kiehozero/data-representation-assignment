@@ -39,3 +39,6 @@ idea 2:
 - setlist.fm (reqs API key) called Last.fm, shows you a setlist so you can listen to the songs again? something rubbish like that
 - replicate Bands spreadsheet as DB using setlist.fm data
 - integrate Last.fm (reqs API key) and Spotify (reqs API key)? Looks like it has a weird authentication method in Last.fm, send artist or song to Spotify playlist?
+
+style ideas:
+- https://getbootstrap.com/docs/5.3/customize/color-modes/
