@@ -1,6 +1,8 @@
 # data-representation-assignment
 
-A repository for the final assignment in ATU Data Representation
+A repository for the final assignment in ATU Data Representation, submitted in the winter 2023/24 semester.
+
+## Project requirements
 
 Requirements:
 Write a program that demonstrates that you understand creating and consuming RESTful APIs.
@@ -24,8 +26,7 @@ Plus (each point 0-10%):
 
 idea 1:
 
-- NHL Sportradar (reqs API key)
-- create a Top Trumps game?
+- NHL Top Trumps
 - start with random player
 - user picks one of five or six items from stats (G, A, Shots, Hits, +/-?)
 - click PLAY to reveal card and win/loss
@@ -34,21 +35,13 @@ idea 1:
 - AUTH: register to save your cards
 - link more information from Elite Prospects (reqs API key)? Looks like a bit of hassle getting a key here
 
-idea 2:
-
-- setlist.fm (reqs API key) called Last.fm, shows you a setlist so you can listen to the songs again? something rubbish like that
-- replicate Bands spreadsheet as DB using setlist.fm data
-- integrate Last.fm (reqs API key) and Spotify (reqs API key)? Looks like it has a weird authentication method in Last.fm, send artist or song to Spotify playlist?
-
-style ideas:
-
-- [Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
-
-# References
+## References
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 [Github documentation on NHL API](https://github.com/Zmalski/NHL-API-Reference)
 [More NHL API documentation because the league can't be bothered writing it themselves](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
 [Discussion on the API and some general points](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/?rdt=40503)
-## mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit, but some of the above docs helped everyone get back on track
 
+ [Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
+
+- mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit, but some of the above docs helped everyone get back on track
