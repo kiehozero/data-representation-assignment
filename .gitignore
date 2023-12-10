@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Added 10/12/2023
-config.py
+/config.py
