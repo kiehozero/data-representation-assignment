@@ -43,3 +43,12 @@ idea 2:
 style ideas:
 
 - [Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
+
+# References
+
+[Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+[Github documentation on NHL API](https://github.com/Zmalski/NHL-API-Reference)
+[More NHL API documentation because the league can't be bothered writing it themselves](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
+[Discussion on the API and some general points](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/?rdt=40503)
+## mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit, but some of the above docs helped everyone get back on track
+
