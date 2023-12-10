@@ -38,10 +38,12 @@ idea 1:
 ## References
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
-[Github documentation on NHL API](https://github.com/Zmalski/NHL-API-Reference)
+[Github documentation on NHL API](https://github.com/Zmalski/NHL-API-Reference) - this man is a lifesaver
 [More NHL API documentation because the league can't be bothered writing it themselves](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
 [Discussion on the API and some general points](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/?rdt=40503)
+[Getting a Favicon to work in Flask](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
+[Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
+[Favicon Generator](https://favicon.io/favicon-converter/)
+[NHL Stats and Analysis Expert](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json) - this was useful for explaining some of the parameters rather than any actual ideas for the assignment
 
- [Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
-
-- mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit, but some of the above docs helped everyone get back on track
+- mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit listed above, but some of the above docs helped everyone get back on track
