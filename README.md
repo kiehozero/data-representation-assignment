@@ -45,5 +45,7 @@ idea 1:
 [Bootstrap dark mode](https://getbootstrap.com/docs/5.3/customize/color-modes/)
 [Favicon Generator](https://favicon.io/favicon-converter/)
 [NHL Stats and Analysis Expert](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json) - this was useful for explaining some of the parameters rather than any actual ideas for the assignment
+[This video](https://www.youtube.com/watch?v=wjo68W2qkqw) helped immensely in pulling the API apart
+[Upper Deck E-Pack](https://www.upperdeckepack.com/) was my inspiration
 
 - mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit listed above, but some of the above docs helped everyone get back on track
