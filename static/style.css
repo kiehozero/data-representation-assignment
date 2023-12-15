@@ -4,7 +4,7 @@
 /* Site-wide settings */
 
 body {
-    background-color: #efefef;
+    background-color: #cccccc;
     color: #05e680;
     font-family: 'Titillium Web', sans-serif;
     font-size: 16px;
@@ -12,10 +12,18 @@ body {
 }
 
 /* Card divs */
+
+.holders {
+    margin-top: 30px;
+    margin-bottom: 30px;    
+}
+
 #card1, #card2 {
     border: 2px solid #111111;
     border-radius: 10px;
-    
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
 }
 
 /* Footer */
@@ -44,8 +52,15 @@ footer {
 .contact,
 .foot-social i {
     color: #ffffff;
+    text-decoration: none;
 }
 
 .foot-social i:hover {
     color: #8a2be2;
+}
+
+/* Bootstrap customisations */
+
+.btn-dark {
+    background-color: #111111;
 }

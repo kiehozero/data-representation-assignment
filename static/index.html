@@ -28,7 +28,7 @@
 <body>
     <!-- Bootstrap default navbar with some styling modifications and removals -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="https://www.nhl.com/" target="_blank"><img src=".\img\NHL_Shield.png" width="50px"></a>
+        <a class="navbar-brand" href="https://www.nhl.com/" target="_blank"><img src=".\img\NHL_Shield.png" width="40px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           	<span class="navbar-toggler-icon"></span>
         </button>
@@ -57,24 +57,26 @@
         </div>
     </nav>
 
-	<h1>
-        NHL test
-    </h1>
-
 	<!-- Main container with a regular margin using Bootstrap spacing -->
 	<main class="container-fluid px-3">
-		<div class="row mx-auto">
-			Welcome to the National Hockey League's top trumps game. 
-			<div>If this is your first time playing, click the button below to open a pack.</div>
-			<div>Use the drop-down to select a player from your collection.</div>
-			<div>Click the 'PLAY' button to select a player to play against and a statistic to use.</div>
-		</div>
-		<div class="row mx-auto">
-			<div class="col-4" id="card1">
-				<div class="rounded border-dark">fdfdasfa</div>
+		<div class="row mx-auto holders">
+			<div class="col-10 offset-1">
+				<h1 class="text-center">Welcome to the National Hockey League's Top Trumps game.</h1>
+				<div>If this is your first time playing, click the button below to open a pack. Use the drop-down to select a player from your collection. Click the 'PLAY' button to select a player to play against and a statistic to use.</div>
 			</div>
-			<div class="col-1" id="play">
-				<div class="rounded border-dark">fdfdasfa</div>
+		</div>
+		<div class="row mx-auto holders">
+			<div class="col-4 offset-1" id="card1">
+				<div class="rounded border-dark">
+					<h4>PLAYER NAME</h4>
+					<div>
+						<img height="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="col-2 d-flex justify-content-center" id="play">
+				<!-- add jQ to change to btn-success or btn-danger dependent on match result -->
+				<button type="button" class="btn btn-dark align-self-center">PLAY</button>
 			</div>
 			<div class="col-4" id="card2">
 				<div class="rounded border-dark">fdfdasfa</div>
