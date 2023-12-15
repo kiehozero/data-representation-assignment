@@ -1,0 +1,51 @@
+/* import a custom font from Google Fonts (ADD REFERENCE TO README) */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+/* Site-wide settings */
+
+body {
+    background-color: #efefef;
+    color: #05e680;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Card divs */
+#card1, #card2 {
+    border: 2px solid #111111;
+    border-radius: 10px;
+    
+}
+
+/* Footer */
+
+footer {
+    /* needs to stick to bottom of page */
+    background-color: #111111;
+    bottom: 0;
+    color: #ffffff;
+    position: fixed;
+}
+
+.footer div {
+    font-size: 22px;
+}
+
+#footer-left {
+    text-align: left;
+}
+
+#footer-right {
+    text-align: right;
+}
+
+.gitlink,
+.contact,
+.foot-social i {
+    color: #ffffff;
+}
+
+.foot-social i:hover {
+    color: #8a2be2;
+}
