@@ -55,7 +55,8 @@ footer {
     text-decoration: none;
 }
 
-.foot-social i:hover {
+.foot-social i:hover,
+.gitlink:hover {
     color: #8a2be2;
 }
 

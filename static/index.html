@@ -18,6 +18,9 @@
         crossorigin="anonymous">
     </script>
 
+	<!-- Database AJAX calls -->
+	<script src="crudOps.js"></script>
+
     <!-- Favicons (DELETE IF NOT USED) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -61,7 +64,7 @@
 	<main class="container-fluid px-3">
 		<div class="row mx-auto holders">
 			<div class="col-10 offset-1">
-				<h1 class="text-center">Welcome to the National Hockey League's Top Trumps game.</h1>
+				<h1 class="text-center">Welcome to the National Hockey League's Top Trumps game</h1>
 				<div>If this is your first time playing, click the button below to open a pack. Use the drop-down to select a player from your collection. Click the 'PLAY' button to select a player to play against and a statistic to use.</div>
 			</div>
 		</div>
@@ -76,10 +79,13 @@
 			</div>
 			<div class="col-2 d-flex justify-content-center" id="play">
 				<!-- add jQ to change to btn-success or btn-danger dependent on match result -->
-				<button type="button" class="btn btn-dark align-self-center">PLAY</button>
+				<button type="button" class="btn btn-dark align-self-center" id="playButton">PLAY</button>
+				<!-- display buttons vertically rather than next to each other -->
+				<button type="button" class="btn btn-dark align-self-center d-none" id="againButton">PLAY AGAIN</button>
 			</div>
 			<div class="col-4" id="card2">
 				<div class="rounded border-dark">fdfdasfa</div>
+				<button class="btn btn-success" id="addCard" onclick="getCard()">Get this card</button>
 			</div>
 		</div>
 	</main>
@@ -109,5 +115,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script>
+		/* Regular AJAX calls to change buttons, add dark mode, etc.*/
+		$(document).ready(function(){
+			/* Use getElementById to store each card's chosen stat */
+			card1stat = 4;
+			card2stat = 3;
+
+			/* Conditional to determine result of match */
+			$("#playButton").click(function(){
+				$("#playButton").removeClass("btn-dark");
+				if (card1stat > card2stat) {
+					result = "YOU WIN!";
+					$("#playButton").addClass("btn-success");
+				} else if (card1stat == card2stat) {
+					result = "DRAW!";
+					$("#playButton").addClass("btn-secondary");
+				} else if (card1stat < card2stat) {
+					result = "YOU LOSE!";
+					$("#playButton").addClass("btn-danger");
+				};
+				document.getElementById('playButton').innerText = result;
+				document.getElementById('againButton').classList.remove("d-none");
+			});
+			/* Play Again button to reset the game */
+			$("#againButton").click(function(){
+				$("#playButton").addClass("btn-dark");
+				$("#playButton").removeClass("btn-success");
+				$("#playButton").removeClass("btn-secondary");
+				$("#playButton").removeClass("btn-danger");
+				document.getElementById('playButton').innerText = "PLAY";
+				document.getElementById('againButton').classList.add("d-none");
+			});
+		});
+	</script>
 </body>
 </html>

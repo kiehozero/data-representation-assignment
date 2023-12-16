@@ -2,14 +2,12 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-
-# Create a list to store the data
 data = []
 
 
-# Create
-@app.route('/create', methods=['POST'])
-def create():
+# Add card to collection
+@app.route('/add', methods=['POST'])
+def add_card():
     # Get the data from the request
     new_data = request.json
 
@@ -19,15 +17,21 @@ def create():
     return jsonify({'message': 'Data created successfully'})
 
 
-# Read
-@app.route('/read', methods=['GET'])
-def read():
+# Show collection
+@app.route('/get', methods=['GET'])
+def get_cards():
     return jsonify(data)
 
 
-# Update
-@app.route('/update/<int:index>', methods=['PUT'])
-def update(index):
+# Return card from collection
+@app.route('/get/<int:id>', methods=['GET'])
+def get_card(id):
+    return jsonify(data[id])
+
+
+# Update - What can I do for an update operation?
+@app.route('/update/<int:id>', methods=['PUT'])
+def update_card(index):
     # Get the updated data from the request
     updated_data = request.json
 
@@ -37,13 +41,12 @@ def update(index):
     return jsonify({'message': 'Data updated successfully'})
 
 
-# Delete
-@app.route('/delete/<int:index>', methods=['DELETE'])
-def delete(index):
+# Delete card from collection
+@app.route('/delete/<int:id>', methods=['DELETE'])
+def delete_card(index):
     # Delete the data at the specified index
     del data[index]
-
-    return jsonify({'message': 'Data deleted successfully'})
+    return jsonify({'message': 'Card deleted.'})
 
 
 if __name__ == '__main__':
