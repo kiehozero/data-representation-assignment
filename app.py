@@ -5,6 +5,12 @@ app = Flask(__name__)
 data = []
 
 
+# Home page
+@app.route('/')
+def index():
+    return "Hello NHL"
+
+
 # Add card to collection
 @app.route('/add', methods=['POST'])
 def add_card():
