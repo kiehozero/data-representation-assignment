@@ -1,14 +1,14 @@
-/* File for containing all AJAX CRUD operations */
+// File for containing all AJAX CRUD operations
 
 function getCard() {
-    /* Test */
+    // Test
     console.log("The sick man of Kilcullen")
-    /* AJAX call to add card to user's collection */
+    // AJAX call to add card to user's collection
     $.ajax({
         url: "/add",
         method: "POST",
         data: {
-            /* data to be sent to the server */
+            // data to be sent to the server
         },
         dataType: "JSON",
         contentType: "application/json; charset=utf-8",

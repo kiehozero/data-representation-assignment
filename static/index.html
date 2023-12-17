@@ -22,10 +22,10 @@
 	<script src='crudOps.js'></script>
 
     <!-- Favicons (DELETE IF NOT USED) -->
-    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
-    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png'>
-    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png'>
-    <link rel='manifest' href='/site.webmanifest'>
+    <link rel='apple-touch-icon' sizes='180x180' href='./apple-touch-icon.png'>
+    <link rel='icon' type='image/png' sizes='32x32' href='./favicon-32x32.png'>
+    <link rel='icon' type='image/png' sizes='16x16' href='./favicon-16x16.png'>
+    <link rel='manifest' href='./site.webmanifest'>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
         <div class='collapse navbar-collapse' id='navbarSupportedContent'>
           	<ul class='navbar-nav mr-auto'>
             	<li class='nav-item active'>
-            		<!-- change this to the home app.route once it is set up-->
+            		<!-- change this to the home app.route once it is set up -->
               		<a class='nav-link' href='#'>Home <span class='sr-only'>(current)</span></a>
             	</li>
             	<li class='nav-item'>
@@ -91,24 +91,24 @@
 	</main>
 
 	<footer class='container-fluid'>
-        <!--Footer shell taken from Code Institute resume mini-project.-->
+        <!--Footer shell taken from Code Institute resume mini-project. -->
         <div class='row footer'>
             <div id='footer-left' class='col-12 col-md-4 d-sm-block'>
                 <a class='foot-social' target='_blank' href='http://www.twitter.com/'><i class='fab fa-twitter-square'></i></a>
                 <a class='foot-social' target='_blank' href='http://www.instagram.com/'><i class='fab fa-instagram-square'></i></a>
-                <!--Below displays modal contact form on click, this is stored after the closing footer tag-->
+                <!--Below displays modal contact form on click, this is stored after the closing footer tag -->
                 <a class='foot-social' id='contact-footer'><i class='fas fa-envelope-square'></i></a>
             </div>
 
             <div id='footer-centre' class='col-12 col-md-4 d-none d-sm-block'>
-            <!--No content here-->
+            <!--No content here -->
             </div>
 
             <div id='footer-right' class='col-12 col-md-4 d-none d-sm-block'>
                 <p>Design by <a class='gitlink' target='_blank' href='https://www.github.com/kiehozero'>kiehozero <i class='fab fa-github-square'></i></a></p>
             </div>
         </div>
-        <!--Footer shell taken from Code Institute resume mini-project.-->
+        <!--Footer shell taken from Code Institute resume mini-project. -->
     </footer>
 
     <!-- jQuery, Popper and Bootstrap JS -->
@@ -129,6 +129,7 @@
 					result = 'YOU WIN!';
 					$('#playButton').addClass('btn-success');
 					$('#addCard').removeClass('d-none');
+					/* add logic - if ID is aleady in DB, display "You already have this card" and disable button */
 				} else if (card1stat == card2stat) {
 					result = 'DRAW!';
 					$('#playButton').addClass('btn-secondary');
