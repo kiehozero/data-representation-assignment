@@ -50,4 +50,4 @@ idea 1:
 W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was simply invaluable. Javascript is by far my weakest skill in this course, pretty much every mistake I made in writing JS or jQuery code was fixed by a part of that tutorial.
 
 - mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit listed above, but some of the above docs helped everyone get back on track
-- add the Awaydays mini-project as a reference
+- To get up and running I used a light Bootstrap template that I had previously created on a project called [Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html)
