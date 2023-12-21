@@ -26,6 +26,11 @@ body {
     text-align: center;
 }
 
+.stat-header {
+    /* not currently working */
+    text-align: center;
+}
+
 /* Footer */
 
 footer {
@@ -60,8 +65,16 @@ footer {
     color: #8a2be2;
 }
 
-/* Bootstrap customisations */
+/* Bootstrap, Font Awesome customisations */
+
+.btn {
+    margin: 10px;
+}
 
 .btn-dark {
     background-color: #111111;
+}
+
+.fa-rotate {
+    color: #ffffff;
 }

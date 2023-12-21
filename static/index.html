@@ -22,14 +22,14 @@
 	<script src='crudOps.js'></script>
 
     <!-- Favicons (DELETE IF NOT USED) -->
-    <link rel='apple-touch-icon' sizes='180x180' href='./apple-touch-icon.png'>
-    <link rel='icon' type='image/png' sizes='32x32' href='./favicon-32x32.png'>
-    <link rel='icon' type='image/png' sizes='16x16' href='./favicon-16x16.png'>
-    <link rel='manifest' href='./site.webmanifest'>
+    <link rel='apple-touch-icon' sizes='180x180' href='./favicons/apple-touch-icon.png'>
+    <link rel='icon' type='image/png' sizes='32x32' href='./favicons/favicon-32x32.png'>
+    <link rel='icon' type='image/png' sizes='16x16' href='./favicons/favicon-16x16.png'>
+    <link rel='manifest' href='./favicons/site.webmanifest'>
 </head>
 
 <body>
-    <!-- Bootstrap default navbar with some styling modifications and removals -->
+    <!-- Bootstrap default modified navbar -->
     <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
         <a class='navbar-brand' href='https://www.nhl.com/' target='_blank'><img src='.\img\NHL_Shield.png' width='40px'></a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -60,7 +60,7 @@
         </div>
     </nav>
 
-	<!-- Main container with a regular margin using Bootstrap spacing -->
+	<!-- Main container with Bootstrap spacing classes to create margin -->
 	<main class='container-fluid px-3'>
 		<div class='row mx-auto holders'>
 			<div class='col-10 offset-1'>
@@ -71,10 +71,35 @@
 		<div class='row mx-auto holders'>
 			<div class='col-4 offset-1' id='card1'>
 				<div class='rounded border-dark'>
+					<!-- replace with API-generated name -->
 					<h4>PLAYER NAME</h4>
-					<div>
+					<!-- Photo section -->
+					<div class='picBox'>
+						<!-- replace with API-generated image -->
 						<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
 					</div>
+					<!-- Stats section -->
+					<div class='statBox d-none'>
+						<!-- API-generated statistics here, with a corresponding button per row for each to use as selection -->
+						<div class='row'>
+							<div class='col-6 stat-header'>Goals:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Assists:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Plus/Minus:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Powerplay Goals:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Time on Ice:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+						</div>
+					</div>
+					<!-- Button to toggle between picture and statistics -->
+					<button type='button' class='btn btn-dark' id='flipButton'>
+						<i class='fa fa-solid fa-rotate'></i>
+						View stats
+					</button>
+				
 				</div>
 			</div>
 			<div class='col-2 d-flex justify-content-center' id='play'>
@@ -84,73 +109,45 @@
 				<button type='button' class='btn btn-dark align-self-center d-none' id='againButton'>PLAY AGAIN</button>
 			</div>
 			<div class='col-4' id='card2'>
-				<div class='rounded border-dark'>fdfdasfa</div>
+				<div class='rounded border-dark'>
+					<h4>PLAYER GENERATED NAME</h4>
+					<!-- don't add the statBox item from above, showing those before a match defeats the whole point of the game -->
+					<div>
+						<!-- replace with API-generated image -->
+						<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
+					</div>
+				</div>
+				<!-- ERROR This currently doesn't work when an stat button is selected -->
 				<button class='btn btn-success d-none' id='addCard' onclick='getCard()'>Get this card</button>
 			</div>
 		</div>
 	</main>
 
 	<footer class='container-fluid'>
-        <!--Footer shell taken from Code Institute resume mini-project. -->
+        <!--Footer taken from Awaydays mini-project. -->
         <div class='row footer'>
             <div id='footer-left' class='col-12 col-md-4 d-sm-block'>
                 <a class='foot-social' target='_blank' href='http://www.twitter.com/'><i class='fab fa-twitter-square'></i></a>
                 <a class='foot-social' target='_blank' href='http://www.instagram.com/'><i class='fab fa-instagram-square'></i></a>
-                <!--Below displays modal contact form on click, this is stored after the closing footer tag -->
                 <a class='foot-social' id='contact-footer'><i class='fas fa-envelope-square'></i></a>
             </div>
 
             <div id='footer-centre' class='col-12 col-md-4 d-none d-sm-block'>
-            <!--No content here -->
+            <!--No content here, just used to place columns correctly -->
             </div>
 
             <div id='footer-right' class='col-12 col-md-4 d-none d-sm-block'>
                 <p>Design by <a class='gitlink' target='_blank' href='https://www.github.com/kiehozero'>kiehozero <i class='fab fa-github-square'></i></a></p>
             </div>
         </div>
-        <!--Footer shell taken from Code Institute resume mini-project. -->
     </footer>
 
-    <!-- jQuery, Popper and Bootstrap JS -->
+    <!-- jQuery, Popper and Bootstrap JS, requirements for Bootstrap functionality -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
-	<script>
-		/* Regular AJAX calls to change buttons, add dark mode, etc.*/
-		$(document).ready(function(){
-			/* Use getElementById to store each card's chosen stat */
-			card1stat = 4;
-			card2stat = 3;
-
-			/* Conditional to determine result of match */
-			$('#playButton').click(function(){
-				$('#playButton').removeClass('btn-dark');
-				if (card1stat > card2stat) {
-					result = 'YOU WIN!';
-					$('#playButton').addClass('btn-success');
-					$('#addCard').removeClass('d-none');
-					/* add logic - if ID is aleady in DB, display "You already have this card" and disable button */
-				} else if (card1stat == card2stat) {
-					result = 'DRAW!';
-					$('#playButton').addClass('btn-secondary');
-				} else if (card1stat < card2stat) {
-					result = 'YOU LOSE!';
-					$('#playButton').addClass('btn-danger');
-				};
-				document.getElementById('playButton').innerText = result;
-				document.getElementById('againButton').classList.remove('d-none');
-			});
-			/* Play Again button to reset the game */
-			$('#againButton').click(function(){
-				$('#playButton').addClass('btn-dark');
-				$('#playButton').removeClass('btn-success');
-				$('#playButton').removeClass('btn-secondary');
-				$('#playButton').removeClass('btn-danger');
-				document.getElementById('playButton').innerText = 'PLAY';
-				document.getElementById('againButton').classList.add('d-none');
-				document.getElementById('addCard').classList.add('d-none');
-			});
-		});
-	</script>
+	
+	<!-- Regular JS and jQuery calls to change button formatting dependent results and user actions -->
+	<script  src="script.js"></script>
 </body>
 </html>
