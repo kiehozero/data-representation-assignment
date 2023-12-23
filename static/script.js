@@ -5,6 +5,8 @@ $(document).ready(function(){
 
     /* Conditional to determine result of match */
     $('#playButton').click(function(){
+        /* StatChoice storea the stat chosen by the user, then use it to determine the result */
+        var statChoice = [];
         $('#playButton').removeClass('btn-dark');
         if (card1stat > card2stat) {
             result = 'YOU WIN!';
@@ -31,6 +33,8 @@ $(document).ready(function(){
         document.getElementById('playButton').innerText = 'PLAY';
         document.getElementById('againButton').classList.add('d-none');
         document.getElementById('addCard').classList.add('d-none');
+        $('.stat-select').removeClass('btn-warning');
+        $('.stat-select').addClass('btn-info');
     });
 
     /* Flip button to show eother stats or picture */

@@ -18,10 +18,7 @@
         crossorigin='anonymous'>
     </script>
 
-	<!-- Database AJAX calls -->
-	<script src='crudOps.js'></script>
-
-    <!-- Favicons (DELETE IF NOT USED) -->
+    <!-- Favicons, generated using favicon.io -->
     <link rel='apple-touch-icon' sizes='180x180' href='./favicons/apple-touch-icon.png'>
     <link rel='icon' type='image/png' sizes='32x32' href='./favicons/favicon-32x32.png'>
     <link rel='icon' type='image/png' sizes='16x16' href='./favicons/favicon-16x16.png'>
@@ -29,10 +26,13 @@
 </head>
 
 <body>
-    <!-- Bootstrap default modified navbar -->
+    <!-- Bootstrap default navbar, with modifications -->
     <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-        <a class='navbar-brand' href='https://www.nhl.com/' target='_blank'><img src='.\img\NHL_Shield.png' width='40px'></a>
-        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+        <a class='navbar-brand' href='https://www.nhl.com/' target='_blank'>
+			<img src='.\img\NHL_Shield.png' alt='The shield of the National Hockey League' width='40px'>
+		</a>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' 
+			aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
           	<span class='navbar-toggler-icon'></span>
         </button>
       
@@ -40,7 +40,7 @@
           	<ul class='navbar-nav mr-auto'>
             	<li class='nav-item active'>
             		<!-- change this to the home app.route once it is set up -->
-              		<a class='nav-link' href='#'>Home <span class='sr-only'>(current)</span></a>
+              		<a class='nav-link' href='index.html'>Home <span class='sr-only'>(current)</span></a>
             	</li>
             	<li class='nav-item'>
               		<a class='nav-link' href='https://www.nhl.com/stats/'>NHL Stats Engine</a>
@@ -50,9 +50,9 @@
                 	Your Profile
               		</a>
               		<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                		<a class='dropdown-item' href='#'>View my Squad</a>
+                		<a class='dropdown-item' href='collection.html'>View my Squad</a>
+						<div class='dropdown-divider'></div>
                 		<a class='dropdown-item disabled' href='#'>View my Friends</a>
-                		<div class='dropdown-divider'></div>
                 		<a class='dropdown-item disabled' href='#'>Your Trades</a>
               		</div>
             	</li>
@@ -69,6 +69,8 @@
 			</div>
 		</div>
 		<div class='row mx-auto holders'>
+
+			<!-- Player's chosen card -->
 			<div class='col-4 offset-1' id='card1'>
 				<div class='rounded border-dark'>
 					<!-- replace with API-generated name -->
@@ -99,15 +101,18 @@
 						<i class='fa fa-solid fa-rotate'></i>
 						View stats
 					</button>
-				
 				</div>
 			</div>
-			<div class='col-2 d-flex justify-content-center' id='play'>
+
+			<!-- Play/Result Buttons -->
+			<div class='col-2 d-block' id='play'>
 				<!-- add jQ to change to btn-success or btn-danger dependent on match result -->
-				<button type='button' class='btn btn-dark align-self-center' id='playButton'>PLAY</button>
+				<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton'>PLAY</button>
 				<!-- display buttons vertically rather than next to each other -->
-				<button type='button' class='btn btn-dark align-self-center d-none' id='againButton'>PLAY AGAIN</button>
+				<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>PLAY AGAIN</button>
 			</div>
+
+			<!-- Randomly-generated card -->
 			<div class='col-4' id='card2'>
 				<div class='rounded border-dark'>
 					<h4>PLAYER GENERATED NAME</h4>
@@ -123,8 +128,8 @@
 		</div>
 	</main>
 
+	<!--Footer taken from Awaydays mini-project. -->
 	<footer class='container-fluid'>
-        <!--Footer taken from Awaydays mini-project. -->
         <div class='row footer'>
             <div id='footer-left' class='col-12 col-md-4 d-sm-block'>
                 <a class='foot-social' target='_blank' href='http://www.twitter.com/'><i class='fab fa-twitter-square'></i></a>
@@ -142,12 +147,15 @@
         </div>
     </footer>
 
-    <!-- jQuery, Popper and Bootstrap JS, requirements for Bootstrap functionality -->
+    <!-- jQuery, Popper and Bootstrap JS, latter two are requirements for Bootstrap functionality, pretty sure they are unused -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
 	
 	<!-- Regular JS and jQuery calls to change button formatting dependent results and user actions -->
 	<script  src="script.js"></script>
+
+	<!-- Database AJAX calls -->
+	<script src='crudOps.js'></script>
 </body>
 </html>
