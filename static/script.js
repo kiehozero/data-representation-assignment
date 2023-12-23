@@ -34,12 +34,17 @@ $(document).ready(function(){
     });
 
     /* Flip button to show eother stats or picture */
+    var flip = document.getElementById('flipButton');
     $('#flipButton').click(function(){
         $('.picBox').toggleClass('d-none');
         $('.statBox').toggleClass('d-none');
-        $('#flipButton').toggleClass('fa-rotate');
-        document.getElementById('flipButton').innerText = 'View Picture';
-    });
+        /* logic taken from W3: https://www.w3schools.com/howto/howto_js_toggle_text.asp */
+        if (flip.innerText == 'View Picture') {
+            flip.innerText = 'View Stats';
+        } else {
+            flip.innerText = 'View Picture';
+        };
+    }); 
 
     /* Stat buttons to select a stat to play with, toggle between btn-info and btn-warning for selected stat */
     $('.stat-select').click(function(){
@@ -47,7 +52,8 @@ $(document).ready(function(){
         $('.stat-select').addClass('btn-info');
         $(this).removeClass('btn-info');
         $(this).addClass('btn-warning');
-        /* can be removed, just for testing, it also causes an error in how the win/loss button is styled above
+        /* can be removed, just for testing, it also causes an error in how the win/loss button is styled above,
+        although it will be useful once you start pushing items up to SQL
         card1stat = $(this).parent().prev().text();
         console.log(card1stat); */
     });
