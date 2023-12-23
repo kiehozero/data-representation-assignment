@@ -1,7 +1,8 @@
 $(document).ready(function(){
     /* Use getElementById to store each card's chosen stat */
-    card1stat = 4;
-    card2stat = 3;
+    var card1stat = 4;
+    var card2stat = 3;
+    var result = '';
 
     /* Conditional to determine result of match */
     $('#playButton').click(function(){
@@ -22,10 +23,12 @@ $(document).ready(function(){
         };
         document.getElementById('playButton').innerText = result;
         document.getElementById('againButton').classList.remove('d-none');
+        document.getElementById('flipOppo').classList.remove('d-none');
     });
 
-    /* Play Again button to reset the game, pretty much the opposite of the above */
+    /* Play Again button to reset the game's variables and visible styles, pretty much the opposite of the above */
     $('#againButton').click(function(){
+        result = '';
         $('#playButton').addClass('btn-dark');
         $('#playButton').removeClass('btn-success');
         $('#playButton').removeClass('btn-secondary');
@@ -33,11 +36,18 @@ $(document).ready(function(){
         document.getElementById('playButton').innerText = 'PLAY';
         document.getElementById('againButton').classList.add('d-none');
         document.getElementById('addCard').classList.add('d-none');
+        document.getElementById('flipOppo').classList.add('d-none');
         $('.stat-select').removeClass('btn-warning');
         $('.stat-select').addClass('btn-info');
+        $('#flipButton').innerText = 'View Picture';
+        $('.picBox').removeClass('d-none');
+        $('.statBox').addClass('d-none');
+        $('#flipOppo').innerText = 'View Picture';
+        $('.picOppo').removeClass('d-none');
+        $('.statOppo').addClass('d-none');
     });
 
-    /* Flip button to show eother stats or picture */
+    /* Flip button to show either stats or picture of player's chosen card */
     var flip = document.getElementById('flipButton');
     $('#flipButton').click(function(){
         $('.picBox').toggleClass('d-none');
@@ -49,6 +59,21 @@ $(document).ready(function(){
             flip.innerText = 'View Picture';
         };
     }); 
+
+    /* Flip button to show either stats or picture of opponent's card, but only displayed when result is non-blank */
+    var oppo = document.getElementById('flipOppo');
+    
+        $('#flipOppo').removeClass('d-none');
+        $('#flipOppo').click(function(){
+            $('.picOppo').toggleClass('d-none');
+            $('.statOppo').toggleClass('d-none');
+            if (oppo.innerText == 'View Picture') {
+                oppo.innerText = 'View Stats';
+            } else {
+                oppo.innerText = 'View Picture';
+            };
+        });
+    
 
     /* Stat buttons to select a stat to play with, toggle between btn-info and btn-warning for selected stat */
     $('.stat-select').click(function(){

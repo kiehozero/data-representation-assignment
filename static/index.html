@@ -97,10 +97,7 @@
 						</div>
 					</div>
 					<!-- Button to toggle between picture and statistics -->
-					<button type='button' class='btn btn-dark' id='flipButton'>
-						<i class='fa fa-solid fa-rotate'></i>
-						View stats
-					</button>
+					<button type='button' class='btn btn-dark card-flip' id='flipButton'>View stats</button>
 				</div>
 			</div>
 
@@ -117,12 +114,31 @@
 				<div class='rounded border-dark'>
 					<h4>PLAYER GENERATED NAME</h4>
 					<!-- don't add the statBox item from above, showing those before a match defeats the whole point of the game -->
-					<div>
+					<div class="picOppo">
 						<!-- replace with API-generated image -->
 						<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
 					</div>
+					<!-- Stats section -->
+					<div class='statOppo d-none'>
+						<!-- API-generated statistics here, with a corresponding button per row for each to use as selection -->
+						<div class='row'>
+							<!-- By only calling the API once the Play button is clicked, you remove the possibility of users
+								manually unhiding the values using the browser's Inspector tool to reveal the stats-->
+							<div class='col-6 stat-header'>Goals:<span>?</span></div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Assists:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Plus/Minus:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Powerplay Goals:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='col-6 stat-header'>Time on Ice:</div>
+							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+						</div>
+					</div>
 				</div>
-				<!-- ERROR This currently doesn't work when an stat button is selected -->
+				<!-- Button to toggle between picture and statistics -->
+				<button type='button' class='btn btn-dark card-flip' id='flipOppo'>View stats</button>
 				<button class='btn btn-success d-none' id='addCard' onclick='getCard()'>Get this card</button>
 			</div>
 		</div>
