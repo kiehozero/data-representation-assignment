@@ -6,14 +6,14 @@ $(document).ready(function(){
 
     /* Conditional to determine result of match */
     $('#playButton').click(function(){
-        /* StatChoice storea the stat chosen by the user, then use it to determine the result */
+        /* StatChoice stores the stat chosen by the user, then use it to determine the result */
         var statChoice = [];
         $('#playButton').removeClass('btn-dark');
         if (card1stat > card2stat) {
             result = 'YOU WIN!';
             $('#playButton').addClass('btn-success');
             $('#addCard').removeClass('d-none');
-            /* add logic - if ID is aleady in DB, display 'You already have this card' and disable button */
+            /* Add logic - if ID is aleady in DB, display 'You already have this card' and disable button */
         } else if (card1stat == card2stat) {
             result = 'DRAW!';
             $('#playButton').addClass('btn-secondary');
@@ -52,28 +52,26 @@ $(document).ready(function(){
     $('#flipButton').click(function(){
         $('.picBox').toggleClass('d-none');
         $('.statBox').toggleClass('d-none');
-        /* logic taken from W3: https://www.w3schools.com/howto/howto_js_toggle_text.asp */
+        /* Logic taken from W3: https://www.w3schools.com/howto/howto_js_toggle_text.asp */
         if (flip.innerText == 'View Picture') {
             flip.innerText = 'View Stats';
         } else {
             flip.innerText = 'View Picture';
         };
-    }); 
+    });
 
     /* Flip button to show either stats or picture of opponent's card, but only displayed when result is non-blank */
     var oppo = document.getElementById('flipOppo');
-    
-        $('#flipOppo').removeClass('d-none');
-        $('#flipOppo').click(function(){
-            $('.picOppo').toggleClass('d-none');
-            $('.statOppo').toggleClass('d-none');
-            if (oppo.innerText == 'View Picture') {
-                oppo.innerText = 'View Stats';
-            } else {
-                oppo.innerText = 'View Picture';
-            };
-        });
-    
+    $('#flipOppo').removeClass('d-none');
+    $('#flipOppo').click(function(){
+        $('.picOppo').toggleClass('d-none');
+        $('.statOppo').toggleClass('d-none');
+        if (oppo.innerText == 'View Picture') {
+            oppo.innerText = 'View Stats';
+        } else {
+            oppo.innerText = 'View Picture';
+        };
+    });
 
     /* Stat buttons to select a stat to play with, toggle between btn-info and btn-warning for selected stat */
     $('.stat-select').click(function(){
