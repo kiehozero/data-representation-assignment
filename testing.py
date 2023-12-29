@@ -1,8 +1,11 @@
 # Implement all the API calls as functions
+import config
+import pymysql
 import random
 import requests
 
-listUrl = "https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000&active=true"
+listUrl = "https://search.d3.nhle.com/api/v1/search/player"
+listquery = "?q=*&culture=en-us&limit=6000&active=true"
 statUrl = "https://api-web.nhle.com/v1/player/"
 
 playerIds = []
@@ -10,10 +13,12 @@ playerIds = []
 lenPlayers = 2190
 
 
+# can be removed once the DB is populated
 def getAllPlayers():
-    response = requests.get(listUrl)
+    response = requests.get(listUrl + listquery)
     # Andrew's note: in production you would check the status code each time
     players = response.json()
+    # print(players)
     for player in players:
         # need to strip out goalies
         playerIds.append(int(player["playerId"]))
@@ -36,29 +41,43 @@ def getRandPlayer(lenPlayers):
     callRandPlayer = statUrl + str(chosenPlayer) + landing
     response = requests.get(callRandPlayer)
     randPlayerData = response.json()
+    # Add required data to dictionary
     reqdData = {'playerId': randPlayerData['playerId'],
-                'firstName': randPlayerData['firstName'],
-                'lastName': randPlayerData['lastName'],
-                # sometimes this is position, not positionCode, this API is an
-                # absolute mess, only seems to be for ID 8482515 so far
+                # Default items selected where multiple languages are available
+                'firstName': randPlayerData['firstName']['default'],
+                'lastName': randPlayerData['lastName']['default'],
+                # Error warning: occasionally this is positionCode, not positionCode
                 'position': randPlayerData['position'],
-                'fullTeamName': randPlayerData['fullTeamName'],
-                'teamLogo': randPlayerData['teamLogo']}
+                'fullTeamName': randPlayerData['fullTeamName']['default'],
+                'teamLogo': randPlayerData['teamLogo'],
+                'headshot': randPlayerData['headshot'],
+                # take stats final season in seasonTotals dictionary
+                'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
+                'goals': randPlayerData['seasonTotals'][-1]['goals'],
+                'assists': randPlayerData['seasonTotals'][-1]['assists'],
+                'points': randPlayerData['seasonTotals'][-1]['points'],
+                'penaltyMinutes': randPlayerData['seasonTotals'][-1]['pim']
+                }
     print(reqdData)
 
 
-def createBook(book):
-    response = requests.post(url, json=book)
+# to call all players from collection table
+def getCollection():
+    pass
+
+
+def addPlayer(player):
+    response = requests.post(url, json=player)
     return response.json()
 
 
-def updateBook(id, bookdiff):
-    updateurl = url + "/" + str(id)
-    response = requests.put(updateurl, json=bookdiff)
-    return response.json()
+# def updateBook(id, bookdiff):
+    # updateurl = url + "/" + str(id)
+    # response = requests.put(updateurl, json=bookdiff)
+    # return response.json()
 
 
-def deleteBook(id):
+def deletePlayer(id):
     deleteurl = url + "/" + str(id)
     response = requests.delete(deleteurl)
     return response.json()
