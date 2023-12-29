@@ -13,7 +13,9 @@ playerIds = []
 lenPlayers = 2190
 
 
-# can be removed once the DB is populated
+# can be removed once the DB is populated, cols in DB are:
+# id(pk auto_inc), player_id, first_name, last_name, position,
+# team, logo_url, headshot_url, gp, goals, assists, points, pim
 def getAllPlayers():
     response = requests.get(listUrl + listquery)
     # Andrew's note: in production you would check the status code each time
@@ -46,12 +48,12 @@ def getRandPlayer(lenPlayers):
                 # Default items selected where multiple languages are available
                 'firstName': randPlayerData['firstName']['default'],
                 'lastName': randPlayerData['lastName']['default'],
-                # Error warning: occasionally this is positionCode, not positionCode
+                # Warning: occasionally this is positionCode, not positionCode
                 'position': randPlayerData['position'],
                 'fullTeamName': randPlayerData['fullTeamName']['default'],
                 'teamLogo': randPlayerData['teamLogo'],
                 'headshot': randPlayerData['headshot'],
-                # take stats final season in seasonTotals dictionary
+                # Source stats for final season in seasonTotals dictionary
                 'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
                 'goals': randPlayerData['seasonTotals'][-1]['goals'],
                 'assists': randPlayerData['seasonTotals'][-1]['assists'],
@@ -61,7 +63,7 @@ def getRandPlayer(lenPlayers):
     print(reqdData)
 
 
-# to call all players from collection table
+# Call all players from collection table in DB
 def getCollection():
     pass
 
