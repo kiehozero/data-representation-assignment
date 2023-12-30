@@ -40,6 +40,7 @@ idea 1:
 - currently storing the team logo URL in the player DB. Setting up a star schema with team information will allow for more efficient storage of this data (storing it once for each 32 teams, rather than a team logo for all 2200 players)
 - at present there addAllPlayers function has to be run on an ad-hoc basis. A quick improvement here would be to implete a 'delete and insert' (get ref) process to perioducally recreate the table with the latest available data. If the script at preent is run, it will simply add the same values, and deleting all records and starting again creates a new set of primary keys
 - add goalies
+- this API is currently under revision by the league, and it looks like they have yet to fully restructure the data in a uniform manner. I've noticed for some players that 'position' is sometimes listed as 'positionCode', while others have differences between 'teamName' and 'fullTeamName'. There are also some players taken from the active player list who do not show up in the stats engine when their ID code is showing up. There has been lots of noise online about how this looks like it was released as a v1 file, unfortunately I didn't want to throw away work I'd already done when they decided to make this change. 
 
 ## References
 

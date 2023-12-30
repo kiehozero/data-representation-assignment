@@ -31,14 +31,14 @@ def addAllPlayers():
             pass
         else:
             playerIds.append(int(player['playerId']))
-    counter = 0
 
+    counter = 0
     cursor = db.cursor()
+
     # Add each player to the DB
     for i in playerIds:
         sql_insert = '''INSERT INTO players (player_id) VALUES (%s)'''
         cursor.execute(sql_insert, i)
-
         db.commit()
         counter += 1
     print(f'{counter} players added to collection')
@@ -49,38 +49,36 @@ def addAllPlayers():
 
 # Retrieve a random player from DB and return stats from API call
 def getRandPlayer(lenPlayers):
-
     randPlayer = random.randint(0, lenPlayers)
-    # needs to be replaced with a call to DB or JSON?
-
     cursor = db.cursor()
+
     # Retrieve player from DB
     sql_select = '''SELECT player_id FROM players WHERE id = %s'''
     cursor.execute(sql_select, randPlayer)
     chosenPlayer = cursor.fetchone()[0]
 
-    print(chosenPlayer)
-
     # API call to get player data
     callRandPlayer = statUrl + str(chosenPlayer) + '/landing'
     response = requests.get(callRandPlayer)
     randPlayerData = response.json()
+
     # Add required data to dictionary
-    reqdData = {'playerId': randPlayerData['playerId'],
-                # Default items selected where multiple languages are available
-                'firstName': randPlayerData['firstName']['default'],
-                'lastName': randPlayerData['lastName']['default'],
-                'position': randPlayerData['position'],
-                'fullTeamName': randPlayerData['fullTeamName']['default'],
-                'teamLogo': randPlayerData['teamLogo'],
-                'headshot': randPlayerData['headshot'],
-                # Source stats for final season in seasonTotals dictionary
-                'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
-                'goals': randPlayerData['seasonTotals'][-1]['goals'],
-                'assists': randPlayerData['seasonTotals'][-1]['assists'],
-                'points': randPlayerData['seasonTotals'][-1]['points'],
-                'penaltyMinutes': randPlayerData['seasonTotals'][-1]['pim']
-                }
+    reqdData = {
+        'playerId': randPlayerData['playerId'],
+        # Default items selected where multiple languages are available
+        'firstName': randPlayerData['firstName']['default'],
+        'lastName': randPlayerData['lastName']['default'],
+        'position': randPlayerData['position'],
+        'fullTeamName': randPlayerData['fullTeamName']['default'],
+        'teamLogo': randPlayerData['teamLogo'],
+        'headshot': randPlayerData['headshot'],
+        # Source stats for final season in seasonTotals dictionary
+        'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
+        'goals': randPlayerData['seasonTotals'][-1]['goals'],
+        'assists': randPlayerData['seasonTotals'][-1]['assists'],
+        'points': randPlayerData['seasonTotals'][-1]['points'],
+        'penaltyMinutes': randPlayerData['seasonTotals'][-1]['pim']
+    }
     print(reqdData)
 
 
@@ -96,7 +94,7 @@ def getCollection():
         pl = list(player)
         pl.pop(0)
         collection.append(pl)
-    print(collection)
+    return collection
 
 
 def addPlayer(player):
@@ -126,8 +124,8 @@ if __name__ == '__main__':
         'Price': 85
     }
     # addAllPlayers()
-    # getRandPlayer(lenPlayers)
-    getCollection()
+    getRandPlayer(lenPlayers)
+    # getCollection()
 
     # print(createBook(book))
     # print(updateBook(345, bookdiff))

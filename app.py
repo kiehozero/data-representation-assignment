@@ -1,6 +1,8 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 import config
 import pymysql
+import random
+import requests
 
 app = Flask(__name__)
 
@@ -15,9 +17,9 @@ data = []
 
 
 # Home page
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    return render_template('static/index.html')
+    return render_template('index.html')
 
 
 # Add card to collection
@@ -25,14 +27,16 @@ def index():
 def add_card():
     # Add the data to the DB
     print('Data created successfully')
-    return render_template('static/index.html')
+    '''data needs to be packaging up in the http request, and then in this
+    function you would refer to that as request.json, with the data being in
+    the form of a dictionary, so you'd have request.json['player_id'] etc.
+    '''
 
 
 # Show collection
-@app.route('/get', methods=['GET'])
+@app.route('/collection', methods=['GET'])
 def get_cards():
-    return jsonify(data)
-
+    pass
 
 # Return card from collection
 @app.route('/get/<int:id>', methods=['GET'])
@@ -59,6 +63,10 @@ def delete_card(index):
     del data[index]
     return jsonify({'message': 'Card deleted.'})
 
+
+@app.route('/invalid', methods=['GET'])
+def invalid():
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
