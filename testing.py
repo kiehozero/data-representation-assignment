@@ -8,25 +8,39 @@ listUrl = "https://search.d3.nhle.com/api/v1/search/player"
 listquery = "?q=*&culture=en-us&limit=6000&active=true"
 statUrl = "https://api-web.nhle.com/v1/player/"
 
-playerIds = []
-# this is the actual number of players in the DB as of 28/12/2023
+# Database parameters
+db = pymysql.connect(
+    host=config.keys['host'],
+    user=config.keys['user'],
+    password=config.keys['pw'],
+    database=config.keys['db']
+)
+
+# The actual number of players in the DB as of 28/12/2023
 lenPlayers = 2190
 
 
-# can be removed once the DB is populated, cols in DB are:
-# id(pk auto_inc), player_id, first_name, last_name, position,
-# team, logo_url, headshot_url, gp, goals, assists, points, pim
-def getAllPlayers():
+# API call to get all players for DB population. Unused in the webpage.
+def addAllPlayers():
+    playerIds = []
     response = requests.get(listUrl + listquery)
-    # Andrew's note: in production you would check the status code each time
     players = response.json()
-    # print(players)
     for player in players:
-        # need to strip out goalies
         playerIds.append(int(player["playerId"]))
-    # you don't need to calculate the lenPlayers if it always calling stored
-    # DB data, you'd only need to do this on refresh and player count changes
-    return lenPlayers
+    counter = 0
+
+    cursor = db.cursor()
+    # Add each player to the DB
+    for i in playerIds:
+        sql_insert = '''INSERT INTO players (player_id) VALUES (%s)'''
+        cursor.execute(sql_insert, i)
+
+        db.commit()
+        counter += 1
+    print(f'{counter} players added to collection')
+
+    db.close()
+    cursor.close()
 
 
 def getRandPlayer(lenPlayers):
@@ -40,6 +54,8 @@ def getRandPlayer(lenPlayers):
     # needs functionality to loop through existing collection and return only
     # players not already in the collection
     randPlayer = random.randint(0, lenPlayers)
+    # needs to be replaced with a call to DB or JSON?
+
     chosenPlayer = playerIds[randPlayer]
     landing = "/landing"
     callRandPlayer = statUrl + str(chosenPlayer) + landing
@@ -96,8 +112,8 @@ if __name__ == "__main__":
     bookdiff = {
         'Price': 85
     }
-    getAllPlayers()
-    getRandPlayer(lenPlayers)
+    addAllPlayers()
+    # getRandPlayer(lenPlayers)
     # print(createBook(book))
     # print(updateBook(345, bookdiff))
     # print(deleteBook(324))
