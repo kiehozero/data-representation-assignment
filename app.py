@@ -1,6 +1,15 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, render_template, request
+import config
+import pymysql
 
 app = Flask(__name__)
+
+db = pymysql.connect(
+    host=config.keys['host'],
+    user=config.keys['user'],
+    password=config.keys['pw'],
+    database=config.keys['db']
+)
 
 data = []
 
@@ -8,19 +17,15 @@ data = []
 # Home page
 @app.route('/')
 def index():
-    return "Hello NHL"
+    return render_template('static/index.html')
 
 
 # Add card to collection
-@app.route('/add', methods=['POST'])
+@app.route('/add_card', methods=['POST'])
 def add_card():
-    # Get the data from the request
-    new_data = request.json
-
-    # Add the data to the list
-    data.append(new_data)
-
-    return jsonify({'message': 'Data created successfully'})
+    # Add the data to the DB
+    print('Data created successfully')
+    return render_template('static/index.html')
 
 
 # Show collection

@@ -36,6 +36,7 @@ idea 1:
 - link more information from Elite Prospects (reqs API key)? Looks like a bit of hassle getting a key here
 
 ## Improvements
+
 - currently storing the team logo URL in the player DB. Setting up a star schema with team information will allow for more efficient storage of this data (storing it once for each 32 teams, rather than a team logo for all 2200 players)
 
 ## References
@@ -52,6 +53,8 @@ idea 1:
 [Upper Deck E-Pack](https://www.upperdeckepack.com/) was my inspiration
 W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was simply invaluable. Javascript is by far my weakest skill in this course, pretty much every mistake I made in writing JS or jQuery code was fixed by a part of that tutorial.
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
+Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
+Technical Panchatay (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
 
 - mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit listed above, but some of the above docs helped everyone get back on track
 - To get up and running I used a light Bootstrap template that I had previously created on a project called [Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html)
