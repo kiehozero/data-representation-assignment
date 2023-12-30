@@ -43,22 +43,24 @@ def addAllPlayers():
     cursor.close()
 
 
+# Retrieve a random player from DB and return stats from API call
 def getRandPlayer(lenPlayers):
-    # generate a random number between 0 and the length of the list of players
-    # consider adding a try except, whereby if the player chosen is a goalie,
-    # it will try again instead of using their data. This might be something
-    # that can be passed to the initial SQL list, but that might require
-    # converting the lists in getAllPlayers to dicts and changing things around
-    # Once the GetAllPlayers items are stored in a DB, you can call the list
-    # length from there without running that function first
-    # needs functionality to loop through existing collection and return only
-    # players not already in the collection
+
     randPlayer = random.randint(0, lenPlayers)
     # needs to be replaced with a call to DB or JSON?
 
-    chosenPlayer = playerIds[randPlayer]
-    landing = "/landing"
-    callRandPlayer = statUrl + str(chosenPlayer) + landing
+    cursor = db.cursor()
+    # Retrieve player from DB
+    sql_select = '''SELECT player_id FROM players WHERE id = %s'''
+    cursor.execute(sql_select, randPlayer)
+    chosenPlayer = cursor.fetchone()[0]
+
+    print(chosenPlayer)
+
+    # API call to get player data
+    # THIS CURRENTLY GENERATES AN ERROR WHERE A GOALIE IS RETURNED BECAUSE
+    # GOALS, ASSISTS, POINTS AND PIM ARE NOT AVAILABLE IN SEASONTOTALS
+    callRandPlayer = statUrl + str(chosenPlayer) + "/landing"
     response = requests.get(callRandPlayer)
     randPlayerData = response.json()
     # Add required data to dictionary
@@ -68,7 +70,7 @@ def getRandPlayer(lenPlayers):
                 'lastName': randPlayerData['lastName']['default'],
                 # Warning: occasionally this is positionCode, not positionCode
                 'position': randPlayerData['position'],
-                'fullTeamName': randPlayerData['fullTeamName']['default'],
+                #'fullTeamName': randPlayerData['fullTeamName']['default'],
                 'teamLogo': randPlayerData['teamLogo'],
                 'headshot': randPlayerData['headshot'],
                 # Source stats for final season in seasonTotals dictionary
@@ -112,8 +114,8 @@ if __name__ == "__main__":
     bookdiff = {
         'Price': 85
     }
-    addAllPlayers()
-    # getRandPlayer(lenPlayers)
+    # addAllPlayers()
+    getRandPlayer(lenPlayers)
     # print(createBook(book))
     # print(updateBook(345, bookdiff))
     # print(deleteBook(324))
