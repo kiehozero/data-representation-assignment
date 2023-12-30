@@ -7,7 +7,9 @@ $(document).ready(function(){
     /* Conditional to determine result of match */
     $('#playButton').click(function(){
         /* StatChoice stores the stat chosen by the user, then use it to determine the result */
+        /* Add IF statement to check if statChoice is empty, if so, display 'Please select a stat' */
         var statChoice = [];
+        $('#card2').removeClass('d-none');
         $('#playButton').removeClass('btn-dark');
         if (card1stat > card2stat) {
             result = 'YOU WIN!';
@@ -37,6 +39,7 @@ $(document).ready(function(){
         document.getElementById('againButton').classList.add('d-none');
         document.getElementById('addCard').classList.add('d-none');
         document.getElementById('flipOppo').classList.add('d-none');
+        document.getElementById('flipButton').innerText = 'Show Stats';
         $('.stat-select').removeClass('btn-warning');
         $('.stat-select').addClass('btn-info');
         $('#flipButton').innerText = 'View Picture';
@@ -45,6 +48,7 @@ $(document).ready(function(){
         $('#flipOppo').innerText = 'View Picture';
         $('.picOppo').removeClass('d-none');
         $('.statOppo').addClass('d-none');
+        $('#card2').addClass('d-none');
     });
 
     /* Flip button to show either stats or picture of player's chosen card */
@@ -54,7 +58,7 @@ $(document).ready(function(){
         $('.statBox').toggleClass('d-none');
         /* Logic taken from W3: https://www.w3schools.com/howto/howto_js_toggle_text.asp */
         if (flip.innerText == 'View Picture') {
-            flip.innerText = 'View Stats';
+            flip.innerText = 'Show Stats';
         } else {
             flip.innerText = 'View Picture';
         };

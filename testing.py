@@ -62,8 +62,6 @@ def getRandPlayer(lenPlayers):
     print(chosenPlayer)
 
     # API call to get player data
-    # THIS CURRENTLY GENERATES AN ERROR WHERE A GOALIE IS RETURNED BECAUSE
-    # GOALS, ASSISTS, POINTS AND PIM ARE NOT AVAILABLE IN SEASONTOTALS
     callRandPlayer = statUrl + str(chosenPlayer) + '/landing'
     response = requests.get(callRandPlayer)
     randPlayerData = response.json()
@@ -72,9 +70,8 @@ def getRandPlayer(lenPlayers):
                 # Default items selected where multiple languages are available
                 'firstName': randPlayerData['firstName']['default'],
                 'lastName': randPlayerData['lastName']['default'],
-                # Warning: occasionally this is positionCode, not positionCode
                 'position': randPlayerData['position'],
-                #'fullTeamName': randPlayerData['fullTeamName']['default'],
+                'fullTeamName': randPlayerData['fullTeamName']['default'],
                 'teamLogo': randPlayerData['teamLogo'],
                 'headshot': randPlayerData['headshot'],
                 # Source stats for final season in seasonTotals dictionary

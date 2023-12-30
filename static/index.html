@@ -65,7 +65,8 @@
 		<div class='row mx-auto holders'>
 			<div class='col-10 offset-1'>
 				<h1 class='text-center'>Welcome to the National Hockey League's Top Trumps game</h1>
-				<div>If this is your first time playing, click the button below to open a pack. Use the drop-down to select a player from your collection. Click the 'PLAY' button to select a player to play against and a statistic to use.</div>
+				<div class='text-center'>Use the drop-down to select a player from your collection, and click 'Show Stats' to choose a statistic to use.<br>
+					Click the 'PLAY' button to reveal your opponent: if your player has a higher statistic, you win your opponent's card!</div>
 			</div>
 		</div>
 		<div class='row mx-auto holders'>
@@ -97,7 +98,7 @@
 						</div>
 					</div>
 					<!-- Button to toggle between picture and statistics -->
-					<button type='button' class='btn btn-dark card-flip' id='flipButton'>View stats</button>
+					<button type='button' class='btn btn-dark card-flip' id='flipButton'>Show stats</button>
 				</div>
 			</div>
 
@@ -110,7 +111,7 @@
 			</div>
 
 			<!-- Randomly-generated card -->
-			<div class='col-4' id='card2'>
+			<div class='col-4 d-none' id='card2'>
 				<div class='rounded border-dark'>
 					<h4>PLAYER GENERATED NAME</h4>
 					<!-- don't add the statBox item from above, showing those before a match defeats the whole point of the game -->
