@@ -86,7 +86,17 @@ def getRandPlayer(lenPlayers):
 
 # Call all players from collection table in DB
 def getCollection():
-    pass
+    collection = []
+    cursor = db.cursor()
+    sql_select = '''SELECT * FROM collection'''
+    cursor.execute(sql_select)
+    players = cursor.fetchall()
+    # Convert to lists without Primary Key
+    for player in players:
+        pl = list(player)
+        pl.pop(0)
+        collection.append(pl)
+    print(collection)
 
 
 def addPlayer(player):
@@ -116,7 +126,9 @@ if __name__ == '__main__':
         'Price': 85
     }
     # addAllPlayers()
-    getRandPlayer(lenPlayers)
+    # getRandPlayer(lenPlayers)
+    getCollection()
+
     # print(createBook(book))
     # print(updateBook(345, bookdiff))
     # print(deleteBook(324))
