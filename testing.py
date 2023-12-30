@@ -37,6 +37,8 @@ def getRandPlayer(lenPlayers):
     # converting the lists in getAllPlayers to dicts and changing things around
     # Once the GetAllPlayers items are stored in a DB, you can call the list
     # length from there without running that function first
+    # needs functionality to loop through existing collection and return only
+    # players not already in the collection
     randPlayer = random.randint(0, lenPlayers)
     chosenPlayer = playerIds[randPlayer]
     landing = "/landing"

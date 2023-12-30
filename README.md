@@ -35,6 +35,9 @@ idea 1:
 - AUTH: register to save your cards
 - link more information from Elite Prospects (reqs API key)? Looks like a bit of hassle getting a key here
 
+## Improvements
+- currently storing the team logo URL in the player DB. Setting up a star schema with team information will allow for more efficient storage of this data (storing it once for each 32 teams, rather than a team logo for all 2200 players)
+
 ## References
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
