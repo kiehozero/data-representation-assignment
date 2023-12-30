@@ -10,7 +10,8 @@ db = pymysql.connect(
 )
 
 cursor = db.cursor()
-sql_table = '''CREATE TABLE collection (
+# Query to create collection table
+col_table = '''CREATE TABLE collection (
     id INT AUTO_INCREMENT PRIMARY KEY,
     player_id INT,
     first_name VARCHAR(30),
@@ -25,9 +26,12 @@ sql_table = '''CREATE TABLE collection (
     points INT,
     pim INT)'''
 
-cursor.execute(sql_table)
+# Query to create players table
+pla_table = '''CREATE TABLE players (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_id INT)'''
 
-# add operation for players table here
+cursor.execute(pla_table)
 
 db.close()
 cursor.close()

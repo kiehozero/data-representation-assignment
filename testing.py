@@ -4,9 +4,9 @@ import pymysql
 import random
 import requests
 
-listUrl = "https://search.d3.nhle.com/api/v1/search/player"
-listquery = "?q=*&culture=en-us&limit=6000&active=true"
-statUrl = "https://api-web.nhle.com/v1/player/"
+listUrl = 'https://search.d3.nhle.com/api/v1/search/player'
+listquery = '?q=*&culture=en-us&limit=6000&active=true'
+statUrl = 'https://api-web.nhle.com/v1/player/'
 
 # Database parameters
 db = pymysql.connect(
@@ -26,7 +26,11 @@ def addAllPlayers():
     response = requests.get(listUrl + listquery)
     players = response.json()
     for player in players:
-        playerIds.append(int(player["playerId"]))
+        # BUGFIX: exclude goaltenders as they don't have the same stats.
+        if player['positionCode'] == 'G':
+            pass
+        else:
+            playerIds.append(int(player['playerId']))
     counter = 0
 
     cursor = db.cursor()
@@ -60,7 +64,7 @@ def getRandPlayer(lenPlayers):
     # API call to get player data
     # THIS CURRENTLY GENERATES AN ERROR WHERE A GOALIE IS RETURNED BECAUSE
     # GOALS, ASSISTS, POINTS AND PIM ARE NOT AVAILABLE IN SEASONTOTALS
-    callRandPlayer = statUrl + str(chosenPlayer) + "/landing"
+    callRandPlayer = statUrl + str(chosenPlayer) + '/landing'
     response = requests.get(callRandPlayer)
     randPlayerData = response.json()
     # Add required data to dictionary
@@ -94,21 +98,21 @@ def addPlayer(player):
 
 
 # def updateBook(id, bookdiff):
-    # updateurl = url + "/" + str(id)
+    # updateurl = url + '/' + str(id)
     # response = requests.put(updateurl, json=bookdiff)
     # return response.json()
 
 
 def deletePlayer(id):
-    deleteurl = url + "/" + str(id)
+    deleteurl = url + '/' + str(id)
     response = requests.delete(deleteurl)
     return response.json()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     book = {
-        'Author': "Michel Foucault",
-        'Title': "Discipline and Punish",
+        'Author': 'Michel Foucault',
+        'Title': 'Discipline and Punish',
         'Price': 100
     }
     bookdiff = {

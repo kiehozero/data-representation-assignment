@@ -38,6 +38,8 @@ idea 1:
 ## Improvements
 
 - currently storing the team logo URL in the player DB. Setting up a star schema with team information will allow for more efficient storage of this data (storing it once for each 32 teams, rather than a team logo for all 2200 players)
+- at present there addAllPlayers function has to be run on an ad-hoc basis. A quick improvement here would be to implete a 'delete and insert' (get ref) process to perioducally recreate the table with the latest available data. If the script at preent is run, it will simply add the same values, and deleting all records and starting again creates a new set of primary keys
+- add goalies
 
 ## References
 
