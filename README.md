@@ -40,7 +40,7 @@ idea 1:
 - currently storing the team logo URL in the player DB. Setting up a star schema with team information will allow for more efficient storage of this data (storing it once for each 32 teams, rather than a team logo for all 2200 players)
 - at present there addAllPlayers function has to be run on an ad-hoc basis. A quick improvement here would be to implete a 'delete and insert' (get ref) process to perioducally recreate the table with the latest available data. If the script at preent is run, it will simply add the same values, and deleting all records and starting again creates a new set of primary keys
 - add goalies
-- this API is currently under revision by the league, and it looks like they have yet to fully restructure the data in a uniform manner. I've noticed for some players that 'position' is sometimes listed as 'positionCode', while others have differences between 'teamName' and 'fullTeamName'. There are also some players taken from the active player list who do not show up in the stats engine when their ID code is showing up. There has been lots of noise online about how this looks like it was released as a v1 file, unfortunately I didn't want to throw away work I'd already done when they decided to make this change. 
+- this API is currently under revision by the league, and it looks like they have yet to fully restructure the data in a uniform manner. I've noticed for some players that 'position' is sometimes listed as 'positionCode', while others have differences between 'teamName' and 'fullTeamName'. There are also some players taken from the active player list who do not show up in the stats engine when their ID code is showing up. There has been lots of noise online about how this looks like it was released as a v1 file, unfortunately I didn't want to throw away work I'd already done when they decided to make this change.
 
 ## References
 
@@ -57,7 +57,7 @@ idea 1:
 W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was simply invaluable. Javascript is by far my weakest skill in this course, pretty much every mistake I made in writing JS or jQuery code was fixed by a part of that tutorial.
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
-Technical Panchatay (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
+Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
 
 - mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit listed above, but some of the above docs helped everyone get back on track
 - To get up and running I used a light Bootstrap template that I had previously created on a project called [Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html)

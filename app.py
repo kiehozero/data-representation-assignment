@@ -4,7 +4,7 @@ import pymysql
 import random
 import requests
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='')
 
 db = pymysql.connect(
     host=config.keys['host'],
@@ -36,7 +36,7 @@ def add_card():
 # Show collection
 @app.route('/collection', methods=['GET'])
 def get_cards():
-    pass
+    return render_template('collection.html')
 
 # Return card from collection
 @app.route('/get/<int:id>', methods=['GET'])

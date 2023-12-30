@@ -5,7 +5,7 @@
     <title>Welcome to NHL Top Trumps</title>
 
     <!-- Internal CSS styling -->
-    <link rel='stylesheet' href='style.css' type='text/css'>
+    <link rel='stylesheet' href='../static/style.css' type='text/css'>
 
     <!-- Bootstrap CSS styling -->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' 
@@ -22,14 +22,14 @@
     <link rel='apple-touch-icon' sizes='180x180' href='./favicons/apple-touch-icon.png'>
     <link rel='icon' type='image/png' sizes='32x32' href='./favicons/favicon-32x32.png'>
     <link rel='icon' type='image/png' sizes='16x16' href='./favicons/favicon-16x16.png'>
-    <link rel='manifest' href='./favicons/site.webmanifest'>
+    <link rel='manifest' href='..\static\img\NHL_Shield.png'>
 </head>
 
 <body>
     <!-- Bootstrap default navbar, with modifications -->
     <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
         <a class='navbar-brand' href='https://www.nhl.com/' target='_blank'>
-			<img src='.\img\NHL_Shield.png' alt='The shield of the National Hockey League' width='40px'>
+			<img src='../static/img/NHL_Shield.png' alt='The shield of the National Hockey League' width='40px'>
 		</a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' 
 			aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -40,7 +40,7 @@
           	<ul class='navbar-nav mr-auto'>
             	<li class='nav-item active'>
             		<!-- change this to the home app.route once it is set up -->
-              		<a class='nav-link' href='index.html'>Home <span class='sr-only'>(current)</span></a>
+              		<a class='nav-link' href="{{ url_for('index') }}">Home <span class='sr-only'>(current)</span></a>
             	</li>
             	<li class='nav-item'>
               		<a class='nav-link' href='https://www.nhl.com/stats/'>NHL Stats Engine</a>
@@ -50,7 +50,7 @@
                 	Your Profile
               		</a>
               		<div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                		<a class='dropdown-item' href='collection.html'>View my Squad</a>
+                		<a class='dropdown-item' href='{{ url_for("get_cards") }}'>View my Squad</a>
 						<div class='dropdown-divider'></div>
                 		<a class='dropdown-item disabled' href='#'>View my Friends</a>
                 		<a class='dropdown-item disabled' href='#'>Your Trades</a>
@@ -85,16 +85,11 @@
 					<div class='statBox d-none'>
 						<!-- API-generated statistics here, with a corresponding button per row for each to use as selection -->
 						<div class='row'>
-							<div class='col-6 stat-header'>Goals:</div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Assists:</div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Plus/Minus:</div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Powerplay Goals:</div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Time on Ice:</div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='stat-header'>Games Played: <button type='button' id="card_gp" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Goals: <button type='button' id="card_goals" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Assists: <button type='button' id="card_asts" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Points: <button type='button' id="card_pts" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Penalty Minutes: <button type='button' id="card_pim" class='btn btn-info stat-select'>TBC</button></div>
 						</div>
 					</div>
 					<!-- Button to toggle between picture and statistics -->
@@ -125,16 +120,11 @@
 						<div class='row'>
 							<!-- By only calling the API once the Play button is clicked, you remove the possibility of users
 								manually unhiding the values using the browser's Inspector tool to reveal the stats-->
-							<div class='col-6 stat-header'>Games Played: <span>?</span></div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Goals: <span>?</span>:</div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Assists: <span>?</span></div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Points: <span>?</span></div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
-							<div class='col-6 stat-header'>Penalty Minutes: <span>?</span></div>
-							<div class='col-6'><button type='button' class='btn btn-info stat-select'>Select</button></div>
+							<div class='stat-header'>Games Played: <button type='button' id="oppo_gp" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Goals: <button type='button' id="oppo_goals" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Assists: <button type='button' id="oppo_asts" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Points: <button type='button' id="oppo_pts" class='btn btn-info stat-select'>TBC</button></div>
+							<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_pim" class='btn btn-info stat-select'>TBC</button></div>
 						</div>
 					</div>
 				</div>
@@ -172,9 +162,9 @@
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
 	
 	<!-- Regular JS and jQuery calls to change button formatting dependent results and user actions -->
-	<script  src="script.js"></script>
+	<script src='../static/script.js'></script>
 
 	<!-- Database AJAX calls -->
-	<script src='crudOps.js'></script>
+	<script src='../static/crudOps.js'></script>
 </body>
 </html>

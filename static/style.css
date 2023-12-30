@@ -27,8 +27,12 @@ body {
 }
 
 .stat-header {
-    /* not currently working */
-    text-align: center;
+    vertical-align: middle;
+}
+
+.btn.stat-select {
+    /* Chaining the classes overrides Bootstrap's default styling */
+    font-weight: bold;
 }
 
 /* Footer */
