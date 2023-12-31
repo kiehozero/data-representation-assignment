@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, redirect, render_template, request, url_for
+from flask import (
+    flash, Flask, jsonify, redirect, render_template, request, url_for)
 import config
 import pymysql
 import random
@@ -31,7 +32,7 @@ def add_card():
     function you would refer to that as request.json, with the data being in
     the form of a dictionary, so you'd have request.json['player_id'] etc.
     '''
-    # Add message confirming card added
+    # Add flash confirming card added
     return redirect(url_for('index'))
 
 
@@ -39,6 +40,7 @@ def add_card():
 @app.route('/collection', methods=['GET'])
 def get_cards():
     return render_template('collection.html')
+
 
 # Return card from collection
 @app.route('/get/<int:id>', methods=['GET'])
@@ -55,7 +57,9 @@ def update_card(index):
     # Update the data at the specified index
     data[index] = updated_data
 
-    return jsonify({'message': 'Data updated successfully'})
+    # Add flash confirming update
+    print('Data updated successfully')
+    return redirect(url_for('collection'))
 
 
 # Delete card from collection
@@ -63,12 +67,16 @@ def update_card(index):
 def delete_card(index):
     # Delete the data at the specified index
     del data[index]
-    return jsonify({'message': 'Card deleted.'})
+    # Add flash confirming deletion
+    print('Card deleted.')
+    return redirect(url_for('collection'))
 
 
 @app.route('/invalid', methods=['GET'])
 def invalid():
+    # need a catch-all for invalid URLs
     return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

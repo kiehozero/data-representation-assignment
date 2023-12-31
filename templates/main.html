@@ -4,10 +4,10 @@
     <meta charset='UTF-8'>
     <title>{% block title %}{% endblock %}</title>
 
-    <!-- Internal CSS styling -->
-    <link rel='stylesheet' href='{{ url_for("static", filename="style.css") }}'' type='text/css'>
+    <!-- Internal styling -->
+    <link rel='stylesheet' href='{{ url_for("static", filename="style.css") }}' type='text/css'>
 
-    <!-- Bootstrap CSS styling -->
+    <!-- Bootstrap styling -->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' 
         rel='stylesheet' crossorigin='anonymous'
         integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi'>
@@ -62,6 +62,9 @@
 
 	<!-- Main container with Bootstrap spacing classes to create margin -->
 	<main class='container-fluid px-3'>
+		<!-- Add banner here to be used for displaying messages a la Pintbaby
+		https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/-->
+		{% block msgflash %}{% endblock %}
 		<div class='row mx-auto holders'>
 			<div class='col-10 offset-1'>
 				<h1 class='text-center'>{% block h1title %}{% endblock %}</h1>
