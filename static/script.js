@@ -1,7 +1,7 @@
 $(document).ready(function(){
     /* Use getElementById to store each card's chosen stat */
-    var card1stat = 3;
-    var card2stat = 7;
+    var card1stat = 7;
+    var card2stat = 5;
     var result = '';
 
     /* Conditional to determine result of match */

@@ -1,19 +1,17 @@
 // File for containing AJAX operations
 
-function createBookAjax(book) {
-    console.log(JSON.stringify(book));
+function callPlayer() {
+    var statUrl = 'https://api-web.nhle.com/v1/player/';
+    var player = 8482201; /*need to return a player id from players DB */
+    var landing = '/landing';
+    var url = statUrl + player + landing;
     $.ajax({
-        "url": "http://127.0.0.1:5000/test",
-        "method": "POST",
-        "data": JSON.stringify(book),
-        "dataType": "JSON",
-        contentType: "application/json; charset=utf-8",
-        "success": function(result) {
-            //console.log(result);
-            book.id = result.id
-            addBookToTable(book)
-            clearForm()
-            showViewAll()
+        "url": url,
+        "method": "GET",
+        "data": "",
+        "dataType": "JSONP",
+        "success": function(playerData) {
+            console.log(playerData);
         },
         "error": function(xhr, status, error) {
             console.log("error: " + status + "msg: " + error);

@@ -43,7 +43,7 @@
 
 <!-- Play/Result Buttons -->
 <div class='col-2 d-block' id='play'>
-	<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton'>PLAY</button>
+	<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton' onclick="callPlayer()">PLAY</button>
 	<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>PLAY AGAIN</button>
 </div>
 
@@ -74,7 +74,8 @@
 
 	<!-- Button to toggle between picture and statistics -->
 	<button type='button' class='btn btn-dark card-flip' id='flipOppo'>View stats</button>
-	<form action='/add_card' method='post'>
+	<form action='{{ url_for("add_card") }}' method='post'>
+		<!-- JS HTTP req needs to gather data using button ids above the -->
 		<button class='btn btn-success d-none' id='addCard' type='submit'>Get this card</button>
 	</form>
 </div>

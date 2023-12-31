@@ -69,17 +69,20 @@ A properly implemented star schema would become essential if more data was to be
 [Flask docs](https://flask.palletsprojects.com/en/2.0.x/)
 [jQuery](https://api.jquery.com/)
 [PyMySQL](https://pypi.org/project/pymysql/)
+[PythonAnywhere](https://help.pythonanywhere.com/pages/Flask/)
 
 ### Code Help and Useful Tools
 
 [ChatGPT](https://chat.openai.com/)
 [GitHub CoPilot](https://copilot.github.com/)
 [Getting a Favicon to work in Flask](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
-[Templates in Flask](https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/)
+[Templates in Flask](https://flask.palletsprojects.com/en/3.0.x/tutorial/templates/)
+[Flash messages in Flask](https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/)
 [Accessing request data in Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#accessing-request-data)
 [Upper Deck E-Pack](https://www.upperdeckepack.com/) was my inspiration for doing a card-based game
 W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was simply invaluable. Javascript is by far my weakest skill in this course, pretty much every mistake I made in writing JS or jQuery code was fixed by a part of that tutorial.
 [Favicon Generator](https://favicon.io/favicon-converter/)
+[Flask to MySQL setup](https://www.askpython.com/python-modules/flask/flask-mysql-database)
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
 Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)

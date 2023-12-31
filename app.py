@@ -37,7 +37,8 @@ def asjson():
 @app.route('/add_card', methods=['POST'])
 def add_card():
     # Add the data to the DB
-    some_data = {'player_id': 1, 'player_name': 'John Doe'}
+    some_data = {'player_id': request.json["player_id"],
+                 'player_name': request.json["player_name"]}
     print(some_data)
     '''data needs to be packaging up in the http request, and then in this
     function you would refer to that as request.json, with the data being in
