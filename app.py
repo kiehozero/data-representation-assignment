@@ -4,7 +4,7 @@ import pymysql
 import random
 import requests
 
-app = Flask(__name__, static_url_path='', static_folder='')
+app = Flask(__name__, static_url_path='', static_folder='static')
 
 db = pymysql.connect(
     host=config.keys['host'],
@@ -31,6 +31,8 @@ def add_card():
     function you would refer to that as request.json, with the data being in
     the form of a dictionary, so you'd have request.json['player_id'] etc.
     '''
+    # Add message confirming card added
+    return redirect(url_for('index'))
 
 
 # Show collection

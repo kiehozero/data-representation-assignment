@@ -58,6 +58,8 @@ W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was s
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
 Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
+[Flask docs](https://flask.palletsprojects.com/en/2.0.x/)
+[Google Fonts](https://fonts.google.com/specimen/Titillium+Web)
 
 - mention somewhere that the NHL changed their API without notice in October and sent a wave of panic through the r/hockey sub-reddit listed above, but some of the above docs helped everyone get back on track
 - To get up and running I used a light Bootstrap template that I had previously created on a project called [Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html)

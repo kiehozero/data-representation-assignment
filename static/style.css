@@ -1,4 +1,4 @@
-/* import a custom font from Google Fonts (ADD REFERENCE TO README) */
+/* Import a custom font from Google Fonts (see README) */
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
 /* Site-wide settings */
@@ -28,11 +28,6 @@ body {
 
 .stat-header {
     vertical-align: middle;
-}
-
-.btn.stat-select {
-    /* Chaining the classes overrides Bootstrap's default styling */
-    font-weight: bold;
 }
 
 /* Footer */
@@ -73,6 +68,11 @@ footer {
 
 .btn {
     margin: 10px;
+}
+
+.btn.stat-select {
+    /* Chaining the classes overrides Bootstrap's default styling */
+    font-weight: bold;
 }
 
 .btn-dark {
