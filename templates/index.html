@@ -12,101 +12,70 @@
 
 {% block content %}
 
-			<!-- Player's chosen card -->
-			<div class='col-4 offset-1' id='card1'>
-				<div class='rounded border-dark'>
-					<!-- replace with API-generated name -->
-					<h4>PLAYER NAME</h4>
-					<!-- Photo section -->
-					<div class='picBox'>
-						<!-- replace with API-generated image -->
-						<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
-					</div>
-					<!-- Stats section -->
-					<div class='statBox d-none'>
-						<!-- API-generated statistics here, with a corresponding button per row for each to use as selection -->
-						<div class='row'>
-							<div class='stat-header'>Games Played: <button type='button' id="card_gp" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Goals: <button type='button' id="card_goals" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Assists: <button type='button' id="card_asts" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Points: <button type='button' id="card_pts" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Penalty Minutes: <button type='button' id="card_pim" class='btn btn-info stat-select'>TBC</button></div>
-						</div>
-					</div>
-					<!-- Button to toggle between picture and statistics -->
-					<button type='button' class='btn btn-dark card-flip' id='flipButton'>Show stats</button>
-				</div>
-			</div>
+<!-- User-selected card -->
+<div class='col-4 offset-1' id='card1'>
+	<div class='rounded border-dark'>
+		<!-- replace with DB-generated name -->
+		<h4>PLAYER NAME</h4>
 
-			<!-- Play/Result Buttons -->
-			<div class='col-2 d-block' id='play'>
-				<!-- add jQ to change to btn-success or btn-danger dependent on match result -->
-				<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton'>PLAY</button>
-				<!-- display buttons vertically rather than next to each other -->
-				<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>PLAY AGAIN</button>
-			</div>
+		<!-- Photo section -->
+		<div class='picBox'>
+			<!-- replace with DB-generated image -->
+			<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
+		</div>
 
-			<!-- Randomly-generated card -->
-			<div class='col-4 d-none' id='card2'>
-				<div class='rounded border-dark'>
-					<h4>PLAYER GENERATED NAME</h4>
-					<!-- don't add the statBox item from above, showing those before a match defeats the whole point of the game -->
-					<div class="picOppo">
-						<!-- replace with API-generated image -->
-						<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
-					</div>
-					<!-- Stats section -->
-					<div class='statOppo d-none'>
-						<!-- API-generated statistics here, with a corresponding button per row for each to use as selection -->
-						<div class='row'>
-							<!-- By only calling the API once the Play button is clicked, you remove the possibility of users
-								manually unhiding the values using the browser's Inspector tool to reveal the stats-->
-							<div class='stat-header'>Games Played: <button type='button' id="oppo_gp" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Goals: <button type='button' id="oppo_goals" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Assists: <button type='button' id="oppo_asts" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Points: <button type='button' id="oppo_pts" class='btn btn-info stat-select'>TBC</button></div>
-							<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_pim" class='btn btn-info stat-select'>TBC</button></div>
-						</div>
-					</div>
-				</div>
-				<!-- Button to toggle between picture and statistics -->
-				<button type='button' class='btn btn-dark card-flip' id='flipOppo'>View stats</button>
-				<form action='/add_card' method='post'>
-					<button class='btn btn-success d-none' id='addCard' type='submit'>Get this card</button>
-				</form>
+		<!-- Stats section -->
+		<div class='statBox d-none'>
+			<!-- DB-generated statistics here, with a button per item -->
+			<div class='row'>
+				<div class='stat-header'>Games Played: <button type='button' id="card_gp" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Goals: <button type='button' id="card_goals" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Assists: <button type='button' id="card_asts" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Points: <button type='button' id="card_pts" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id="card_pim" class='btn btn-info stat-select'>TBC</button></div>
 			</div>
+		</div>
+
+		<!-- Button to toggle between picture and statistics -->
+		<button type='button' class='btn btn-dark card-flip' id='flipButton'>Show stats</button>
+	</div>
+</div>
+
+<!-- Play/Result Buttons -->
+<div class='col-2 d-block' id='play'>
+	<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton'>PLAY</button>
+	<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>PLAY AGAIN</button>
+</div>
+
+<!-- Randomly-generated card -->
+<div class='col-4' id='card2'>
+	<div class='rounded border-dark'>
+		<!-- replace with API-generated name -->
+		<h4>PLAYER GENERATED NAME</h4>
+
+		<!-- Photo section -->
+		<div class="picOppo">
+			<!-- replace with API-generated image -->
+			<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
+		</div>
+
+		<!-- Stats section -->
+		<div class='statOppo d-none'>
+			<!-- API-generated statistics here, with a button per item -->
+			<div class='row'>
+				<div class='stat-header'>Games Played: <button type='button' id="oppo_gp" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Goals: <button type='button' id="oppo_goals" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Assists: <button type='button' id="oppo_asts" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Points: <button type='button' id="oppo_pts" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_pim" class='btn btn-info stat-select'>TBC</button></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Button to toggle between picture and statistics -->
+	<button type='button' class='btn btn-dark card-flip' id='flipOppo'>View stats</button>
+	<form action='/add_card' method='post'>
+		<button class='btn btn-success d-none' id='addCard' type='submit'>Get this card</button>
+	</form>
+</div>
 {% endblock %}
-
-	<!--Footer taken from Awaydays mini-project. -->
-	<footer class='container-fluid'>
-        <div class='row footer'>
-            <div id='footer-left' class='col-12 col-md-4 d-sm-block'>
-                <a class='foot-social' target='_blank' href='http://www.twitter.com/'><i class='fab fa-twitter-square'></i></a>
-                <a class='foot-social' target='_blank' href='http://www.instagram.com/'><i class='fab fa-instagram-square'></i></a>
-                <a class='foot-social' id='contact-footer'><i class='fas fa-envelope-square'></i></a>
-            </div>
-
-            <div id='footer-centre' class='col-12 col-md-4 d-none d-sm-block'>
-            <!--No content here, just used to place columns correctly -->
-            </div>
-
-            <div id='footer-right' class='col-12 col-md-4 d-none d-sm-block'>
-                <p>Design by <a class='gitlink' target='_blank' href='https://www.github.com/kiehozero'>kiehozero <i class='fab fa-github-square'></i></a></p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- jQuery, Popper and Bootstrap JS, latter two are requirements for Bootstrap functionality, pretty sure they are unused -->
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
-    <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
-	
-	<!-- Regular JS and jQuery calls to change button formatting dependent results and user actions -->
-	<script src='{{ url_for("static", filename="script.js") }}'></script>
-
-	<!-- Database AJAX calls -->
-	<script src='{{ url_for("static", filename="crudOps.js") }}'></script>
-
-</body>
-
-</html>

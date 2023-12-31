@@ -1,7 +1,7 @@
 $(document).ready(function(){
     /* Use getElementById to store each card's chosen stat */
-    var card1stat = 4;
-    var card2stat = 3;
+    var card1stat = 3;
+    var card2stat = 7;
     var result = '';
 
     /* Conditional to determine result of match */
@@ -48,7 +48,6 @@ $(document).ready(function(){
         $('#flipOppo').innerText = 'View Picture';
         $('.picOppo').removeClass('d-none');
         $('.statOppo').addClass('d-none');
-        $('#card2').addClass('d-none');
     });
 
     /* Flip button to show either stats or picture of player's chosen card */
