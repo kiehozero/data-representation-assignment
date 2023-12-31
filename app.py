@@ -23,6 +23,16 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/test', methods=['POST'])
+def asjson():
+    book = {
+        "title": request.json["title"],
+        "author": request.json["author"],
+        "price": request.json["price"]
+    }
+    return jsonify(book)
+
+
 # Add card to collection
 @app.route('/add_card', methods=['POST'])
 def add_card():

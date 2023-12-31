@@ -3,7 +3,7 @@
 function createBookAjax(book) {
     console.log(JSON.stringify(book));
     $.ajax({
-        "url": "http://127.0.0.1:5000/books",
+        "url": "http://127.0.0.1:5000/test",
         "method": "POST",
         "data": JSON.stringify(book),
         "dataType": "JSON",
@@ -20,3 +20,5 @@ function createBookAjax(book) {
         }
     });
 }
+
+/* need an initial API call for the player name and card, then a second for stats. Or could just load it all in one go, as the stats box is not displayed anyway */
