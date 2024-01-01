@@ -70,6 +70,7 @@ A properly implemented star schema would become essential if more data was to be
 [jQuery](https://api.jquery.com/)
 [PyMySQL](https://pypi.org/project/pymysql/)
 [PythonAnywhere](https://help.pythonanywhere.com/pages/Flask/)
+[Requests Library](https://requests.readthedocs.io/en/latest/user/quickstart/)
 
 ### Code Help and Useful Tools
 

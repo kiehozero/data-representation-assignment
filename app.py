@@ -26,9 +26,8 @@ def index():
 @app.route('/test', methods=['POST'])
 def asjson():
     book = {
-        "title": request.json["title"],
-        "author": request.json["author"],
-        "price": request.json["price"]
+        "player": request.json["player_id"],
+        "player_ID": request.json["player_name"]
     }
     return jsonify(book)
 
@@ -61,7 +60,7 @@ def get_card(id):
 
 
 # Update - What can I do for an update operation?
-@app.route('/update/<int:id>', methods=['PUT'])
+@app.route('/collection/<int:id>', methods=['PUT'])
 def update_card(index):
     # Get the updated data from the request
     updated_data = request.json
@@ -75,7 +74,7 @@ def update_card(index):
 
 
 # Delete card from collection
-@app.route('/delete/<int:id>', methods=['DELETE'])
+@app.route('/collection/<int:id>', methods=['DELETE'])
 def delete_card(index):
     # Delete the data at the specified index
     del data[index]
