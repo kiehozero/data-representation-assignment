@@ -65,7 +65,6 @@ $(document).ready(function(){
 
     /* Flip button to show either stats or picture of opponent's card, but only displayed when result is non-blank */
     var oppo = document.getElementById('flipOppo');
-    $('#flipOppo').removeClass('d-none');
     $('#flipOppo').click(function(){
         $('.picOppo').toggleClass('d-none');
         $('.statOppo').toggleClass('d-none');
