@@ -1,9 +1,13 @@
-# Implement all the API calls as functions
+# Implement all the NHL API calls as functions to the server
 import config
 import pymysql
 import random
 import requests
 
+'''API URLs - listUrl is used to populate the DB, statUrl is used to get player
+stats. The list contains top-line information on every player, mainly
+biographical. The statUrl contains more detailed information on each player and
+has to be called player-by-player. '''
 listUrl = 'https://search.d3.nhle.com/api/v1/search/player'
 listquery = '?q=*&culture=en-us&limit=6000&active=true'
 statUrl = 'https://api-web.nhle.com/v1/player/'
@@ -13,15 +17,14 @@ db = pymysql.connect(
     host=config.keys['host'],
     user=config.keys['user'],
     password=config.keys['pw'],
-    database=config.keys['db']
-)
+    database=config.keys['db'])
 
 # The actual number of players in the DB as of 28/12/2023
 lenPlayers = 2190
 
 
-# API call to get all players for DB population. Unused in the webpage.
-def addAllPlayers():
+# API call to get all players for DB population
+def addPlayerIds():
     playerIds = []
     response = requests.get(listUrl + listquery)
     players = response.json()
@@ -45,6 +48,40 @@ def addAllPlayers():
 
     db.close()
     cursor.close()
+
+
+# Retrieve all players from collection table and return stats from API
+def addPlayerStats():
+    cursor = db.cursor()
+    sql_select = '''SELECT player_id FROM players LIMIT 20'''
+    cursor.execute(sql_select)
+    players = cursor.fetchall()
+    for player in players:
+        # API call to get player data
+        callPlayer = statUrl + str(player[0]) + '/landing'
+        response = requests.get(callPlayer)
+        playerData = response.json()
+
+        # Add required data to dictionary
+        reqdData = {
+            'playerId': playerData['playerId'],
+            # Default items selected where multiple languages are available
+            'firstName': playerData['firstName']['default'],
+            'lastName': playerData['lastName']['default'],
+            'position': playerData['position'],
+            'fullTeamName': playerData['fullTeamName']['default'],
+            'teamLogo': playerData['teamLogo'],
+            'headshot': playerData['headshot'],
+            # Source stats for final season in seasonTotals dictionary
+            'games': playerData['seasonTotals'][-1]['gamesPlayed'],
+            'goals': playerData['seasonTotals'][-1]['goals'],
+            'assists': playerData['seasonTotals'][-1]['assists'],
+            'points': playerData['seasonTotals'][-1]['points'],
+            'penaltyMinutes': playerData['seasonTotals'][-1]['pim']
+        }
+        print(reqdData)
+    db.cursor()
+    db.close()
 
 
 # Retrieve a random player from DB and return stats from API call
@@ -97,23 +134,6 @@ def getCollection():
     return collection
 
 
-def addPlayer(player):
-    response = requests.post(url, json=player)
-    return response.json()
-
-
-# def updateBook(id, bookdiff):
-    # updateurl = url + '/' + str(id)
-    # response = requests.put(updateurl, json=bookdiff)
-    # return response.json()
-
-
-def deletePlayer(id):
-    deleteurl = url + '/' + str(id)
-    response = requests.delete(deleteurl)
-    return response.json()
-
-
 if __name__ == '__main__':
     book = {
         'Author': 'Michel Foucault',
@@ -123,8 +143,9 @@ if __name__ == '__main__':
     bookdiff = {
         'Price': 85
     }
-    # addAllPlayers()
-    getRandPlayer(lenPlayers)
+    # addPlayerIds()
+    addPlayerStats()
+    # getRandPlayer(lenPlayers)
     # getCollection()
 
     # print(createBook(book))
