@@ -1,4 +1,5 @@
-'''Insert player manually to collection table just to test functionality'''
+'''Insert player manually to collection table just to test functionality
+This needs to be pushed into app.py and used to add players to collection'''
 import config
 import pymysql
 
@@ -10,7 +11,7 @@ db = pymysql.connect(
 )
 
 
-def addAllPlayers():
+def addPlayers():
     cursor = db.cursor()
     '''Using this method of writing a statement then adding each value later
     getting around potential injection attacks.'''
@@ -39,4 +40,4 @@ def addAllPlayers():
 
 
 if __name__ == '__main__':
-    addAllPlayers()
+    addPlayers()

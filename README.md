@@ -39,7 +39,7 @@ To get up and running I used a light [Bootstrap](https://getbootstrap.com/docs/4
 
 ### A Note on the API
 
-The NHL changed a large number of endpoints and storage methods during Autumn 2023, causing a minor panic online among some users at [r/Hockey](https://www.reddit.com/r/hockey/) and some Discord channels that focus on hockey statistics. This API remains under revision by the league, and it looks like they have yet to fully restructure the data in a uniform manner. I've noticed for some players that 'position' is sometimes listed as 'positionCode', while others have differences between 'teamName' and 'fullTeamName'. There are also differences between column names in different tables, and some players taken from the active player list who do not show up in the player stats engine when their ID code is showing up. Included in the reference section are some discussions and ad-hoc documentation that third-party users noticed themselves, some of these discussions were of enormous use in getting this project off the ground, as the NHL have yet to release officialy documentation.
+The NHL changed a large number of endpoints and storage methods during Autumn 2023, causing a minor panic online among some users at [r/Hockey](https://www.reddit.com/r/hockey/) and some Discord channels that focus on hockey statistics. This API remains under revision by the league, and it looks like they have yet to fully re-structure the data in a uniform manner. I've noticed for some players that 'position' is sometimes listed as 'positionCode', while others have differences between 'teamName' and 'fullTeamName'. There are also differences between column names in different tables, and some players taken from the active player list who do not show up in the player stats engine when their ID code is showing up. Included in the reference section are some discussions and ad-hoc documentation that third-party users noticed themselves, some of these discussions were of enormous use in getting this project off the ground, as the NHL have yet to release officialy documentation.
 
 ## Proposed Improvements
 
@@ -53,15 +53,16 @@ A properly implemented star schema would become essential if more data was to be
 
 ### API Documentation
 
-[Active Player API endpoint](https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000)
-[individual statistical player database endpoint](https://api-web.nhle.com/v1/player/8477846/landing)
+Bloodlinealpha (2023) "NHL States and Analysis Expert" [Github](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json)
+Hynes, D. (2023) "New API documentation" [Gitlab: nhl-api](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
+National Hockey League (2023) [Individual Player Statistics endpoint](https://api-web.nhle.com/v1/player/8477846/landing)
+National Hockey League (2023) [Master Player Directory endpoint](https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000)
+National Hockey League (2023) "NHL Stats". [NHL.com](https://www.nhl.com/stats/)
+r/hockey (2003) "NHL Down - Looking for Alternatives". [Reddit](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/)
+Sidwar, K. (2023) "Reverse Engineering an API" [YouTube](https://www.youtube.com/watch?v=wjo68W2qkqw)
+Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-Reference)
 
-[Github documentation on NHL API](https://github.com/Zmalski/NHL-API-Reference) - this man is a lifesaver
-[More NHL API documentation because the league can't be bothered writing it themselves](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
 [Discussion on the API and some general points](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/?rdt=40503)
-[NHL Stats and Analysis Expert](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json) - this was useful for explaining some of the parameters rather than any actual ideas for the assignment
-[NHL Stats](https://www.nhl.com/stats/)
-[This video](https://www.youtube.com/watch?v=wjo68W2qkqw) helped immensely in pulling the API apart
 
 ### Core Documentation
 

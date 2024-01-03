@@ -1,5 +1,6 @@
 # Implement all the NHL API calls as functions to the server
 import config
+import json
 import pymysql
 import random
 import requests
@@ -50,10 +51,10 @@ def addPlayerIds():
     cursor.close()
 
 
-# Retrieve all players from collection table and return stats from API
+# Retrieve players from collection table and return stats from API
 def addPlayerStats():
     cursor = db.cursor()
-    sql_select = '''SELECT player_id FROM players LIMIT 20'''
+    sql_select = '''SELECT player_id FROM players'''
     cursor.execute(sql_select)
     players = cursor.fetchall()
     for player in players:
@@ -62,24 +63,29 @@ def addPlayerStats():
         response = requests.get(callPlayer)
         playerData = response.json()
 
-        # Add required data to dictionary
-        reqdData = {
-            'playerId': playerData['playerId'],
-            # Default items selected where multiple languages are available
-            'firstName': playerData['firstName']['default'],
-            'lastName': playerData['lastName']['default'],
-            'position': playerData['position'],
-            'fullTeamName': playerData['fullTeamName']['default'],
-            'teamLogo': playerData['teamLogo'],
-            'headshot': playerData['headshot'],
-            # Source stats for final season in seasonTotals dictionary
-            'games': playerData['seasonTotals'][-1]['gamesPlayed'],
-            'goals': playerData['seasonTotals'][-1]['goals'],
-            'assists': playerData['seasonTotals'][-1]['assists'],
-            'points': playerData['seasonTotals'][-1]['points'],
-            'penaltyMinutes': playerData['seasonTotals'][-1]['pim']
-        }
+        # Add required items to list and push to MySQL
+        # Default items selected where multiple languages are available
+        # Source stats for final season in seasonTotals dictionary
+        # I've noticed that some players have no entry for fullTeamName
+        reqdData = [playerData['playerId'], playerData['firstName']['default'],
+                    playerData['lastName']['default'],
+                    playerData['position'],
+                    playerData['fullTeamName']['default'],
+                    playerData['teamLogo'], playerData['headshot'],
+                    playerData['seasonTotals'][-1]['gamesPlayed'],
+                    playerData['seasonTotals'][-1]['goals'],
+                    playerData['seasonTotals'][-1]['assists'],
+                    playerData['seasonTotals'][-1]['points'],
+                    playerData['seasonTotals'][-1]['pim']]
         print(reqdData)
+
+        sql_insert = '''INSERT INTO all_players (player_id, first_name,
+        last_name, position, team, logo_url, headshot_url, gp, goals, assists,
+        points, pim) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
+        cursor.execute(sql_insert, reqdData)
+        db.commit()
+        print('1 player added to collection, ID:', cursor.lastrowid)
+
     db.cursor()
     db.close()
 
@@ -119,7 +125,7 @@ def getRandPlayer(lenPlayers):
     print(reqdData)
 
 
-# Call all players from collection table in DB
+# Call all players from collection table in DB - move to app.py
 def getCollection():
     collection = []
     cursor = db.cursor()
