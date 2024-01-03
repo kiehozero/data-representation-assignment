@@ -1,6 +1,5 @@
 # Implement all the NHL API calls as functions to the server
 import config
-import json
 import pymysql
 import random
 import requests

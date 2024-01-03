@@ -53,16 +53,14 @@ A properly implemented star schema would become essential if more data was to be
 
 ### API Documentation
 
-Bloodlinealpha (2023) "NHL States and Analysis Expert" [Github](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json)
+Bloodlinealpha (2023) "NHL Stats and Analysis Expert" [Github](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json)
 Hynes, D. (2023) "New API documentation" [Gitlab: nhl-api](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
-National Hockey League (2023) [Individual Player Statistics endpoint](https://api-web.nhle.com/v1/player/8477846/landing)
+National Hockey League (2023) [Individual Player Statistics endpoint](https://api-web.nhle.com/v1/player/8477846/landing) (Note that I've pre-populated this link with a player ID)
 National Hockey League (2023) [Master Player Directory endpoint](https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000)
 National Hockey League (2023) "NHL Stats". [NHL.com](https://www.nhl.com/stats/)
 r/hockey (2003) "NHL Down - Looking for Alternatives". [Reddit](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/)
 Sidwar, K. (2023) "Reverse Engineering an API" [YouTube](https://www.youtube.com/watch?v=wjo68W2qkqw)
 Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-Reference)
-
-[Discussion on the API and some general points](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/?rdt=40503)
 
 ### Core Documentation
 
@@ -84,6 +82,7 @@ Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-R
 [Upper Deck E-Pack](https://www.upperdeckepack.com/) was my inspiration for doing a card-based game
 W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was simply invaluable. Javascript is by far my weakest skill in this course, pretty much every mistake I made in writing JS or jQuery code was fixed by a part of that tutorial.
 [Favicon Generator](https://favicon.io/favicon-converter/)
+Beatty, A. (2003) "Data Representation" [Github](https://github.com/andrewbeattycourseware/datarepresentation)
 [Flask to MySQL setup](https://www.askpython.com/python-modules/flask/flask-mysql-database)
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
