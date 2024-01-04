@@ -23,34 +23,21 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/test', methods=['POST'])
-def asjson():
-    book = {
-        "player": request.json["player_id"],
-        "player_ID": request.json["player_name"]
-    }
-    return jsonify(book)
-
-
-# Add card to collection
-@app.route('/add_card', methods=['POST'])
-def add_card():
-    # Add the data to the DB
-    some_data = {'player_id': request.json["player_id"],
-                 'player_name': request.json["player_name"]}
-    print(some_data)
-    '''data needs to be packaging up in the http request, and then in this
-    function you would refer to that as request.json, with the data being in
-    the form of a dictionary, so you'd have request.json['player_id'] etc.
-    '''
-    # Add flash confirming card added
-    return redirect(url_for('index'))
-
-
 # Show collection
 @app.route('/collection', methods=['GET'])
 def get_cards():
-    return render_template('collection.html')
+    collection = []
+    cursor = db.cursor()
+    sql_select = '''SELECT * FROM collection'''
+    cursor.execute(sql_select)
+    players = cursor.fetchall()
+    # Convert to lists without Primary Key
+    for player in players:
+        pl = list(player)
+        pl.pop(0)
+        collection.append(pl)
+    print(collection)
+    return render_template('collection.html', collection=collection)
 
 
 # Return card from collection
@@ -95,38 +82,37 @@ def getRandPlayer(storedPlayers):
 
     # Add required data to dictionary
     reqdData = {
-        'playerId': randPlayerData['playerId'],
+        'playerId': chosenPlayer['playerId'],
         # Default items selected where multiple languages are available
-        'firstName': randPlayerData['firstName']['default'],
-        'lastName': randPlayerData['lastName']['default'],
-        'position': randPlayerData['position'],
-        'fullTeamName': randPlayerData['fullTeamName']['default'],
-        'teamLogo': randPlayerData['teamLogo'],
-        'headshot': randPlayerData['headshot'],
+        'firstName': chosenPlayer['firstName']['default'],
+        'lastName': chosenPlayer['lastName']['default'],
+        'position': chosenPlayer['position'],
+        'fullTeamName': chosenPlayer['fullTeamName']['default'],
+        'teamLogo': chosenPlayer['teamLogo'],
+        'headshot': chosenPlayer['headshot'],
         # Source stats for final season in seasonTotals dictionary
-        'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
-        'goals': randPlayerData['seasonTotals'][-1]['goals'],
-        'assists': randPlayerData['seasonTotals'][-1]['assists'],
-        'points': randPlayerData['seasonTotals'][-1]['points'],
-        'penaltyMinutes': randPlayerData['seasonTotals'][-1]['pim']
+        'games': chosenPlayer['seasonTotals'][-1]['gamesPlayed'],
+        'goals': chosenPlayer['seasonTotals'][-1]['goals'],
+        'assists': chosenPlayer['seasonTotals'][-1]['assists'],
+        'points': chosenPlayer['seasonTotals'][-1]['points'],
+        'penaltyMinutes': chosenPlayer['seasonTotals'][-1]['pim']
     }
     print(reqdData)
 
 
-# Call all players from collection table in DB - move to app.py
-def getCollection():
-    collection = []
-    cursor = db.cursor()
-    sql_select = '''SELECT * FROM collection'''
-    cursor.execute(sql_select)
-    players = cursor.fetchall()
-    # Convert to lists without Primary Key
-    for player in players:
-        pl = list(player)
-        pl.pop(0)
-        collection.append(pl)
-    return collection
-
+# Add card to collection
+@app.route('/add_card', methods=['POST'])
+def add_card():
+    # Add the data to the DB
+    some_data = {'player_id': request.json["player_id"],
+                 'player_name': request.json["player_name"]}
+    print(some_data)
+    '''data needs to be packaging up in the http request, and then in this
+    function you would refer to that as request.json, with the data being in
+    the form of a dictionary, so you'd have request.json['player_id'] etc.
+    '''
+    # Add flash confirming card added
+    return redirect(url_for('index'))
 
 
 @app.route('/invalid', methods=['GET'])

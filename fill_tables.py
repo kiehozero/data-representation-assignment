@@ -77,7 +77,6 @@ def addPlayerStats():
                     playerData['seasonTotals'][-1]['assists'],
                     playerData['seasonTotals'][-1]['points'],
                     playerData['seasonTotals'][-1]['pim']]
-        print(reqdData)
 
         sql_insert = '''INSERT INTO all_players (player_id, first_name,
         last_name, position, team, logo_url, headshot_url, gp, goals, assists,

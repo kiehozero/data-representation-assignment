@@ -2,11 +2,43 @@
 
 {% block title %}Welcome to NHL Top Trumps{% endblock %}
 
-{% block msgflash %}TBC{% endblock %}
+{% block msgflash %}Add flash messages here for item deletion{% endblock %}
 <!-- Display user's current card collection -->
 {% block h1title %}Your Current Squad{% endblock %}
-{% block pagedesc %}daghfgs{% endblock %}
+{% block pagedesc %}Update your collection here{% endblock %}
+
 
 {% block content %}
+<!-- Card for each player -->
+    {% for player in collection %}
+    <div class='col-3 col-card'>
+	    <div class='rounded border-dark'>
+		    <!-- replace with DB-generated name -->
+		    <h4>{{ player[1] }} {{ player[2] }}</h4>
 
+		    <!-- Photo section -->
+		    <div class='picBox'>
+			    <img class="img-fluid" src='{{ player[6] }}'>
+		    </div>
+
+		<!-- Stats section -->
+		<div class='statBox d-none'>
+			<div class='row'>
+				<div class='stat-header'>Games Played: <button type='button' class='btn btn-info'>{{ player[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' class='btn btn-info'>{{ player[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' class='btn btn-info'>{{ player[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' class='btn btn-info'>{{ player[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' class='btn btn-info'>{{ player[12] }}</button></div>
+			</div>
+		</div>
+
+		<!-- Button to toggle between picture and statistics -->
+		<button type='button' class='btn btn-dark card-flip'>Show stats</button>
+        <form action='' method='post'>
+            <!-- JS HTTP req needs to gather data using button ids above the -->
+            <button class='btn btn-danger' id='addCard' type='submit'>Delete {{ player[0] }}</button>
+        </form>
+	</div>
+</div>
+{% endfor %}
 {% endblock %}
