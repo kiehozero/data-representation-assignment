@@ -1,17 +1,17 @@
-# data-representation-assignment
+# Data Representation Assignment, Winter 2023/2024
 
 A repository for the final assignment in ATU Data Representation, submitted in the winter 2023/24 semester.
 
-## Project requirements
+## Project Outline
 
-Requirements:
+### Requirements
 
 - Create a Web application in Flask that has a RESTful API, the application should link to one or more database tables.
-- You should also create the web pages that can consume the API. I.e. performs CRUD operations on the data.
+- Create the web pages that can consume the API. I.e. performs CRUD operations on the data.
 
-Assessment strategy:
+### Assessment strategy:
 
-1. Level 1 (40-45%): A rehash of the sample project lab. A basic Flask server that has a REST API, (to perform CRUD operations), one database table and accompanying web interface, using AJAX calls, to perform these CRUD operations
+1. Level 1 (40-45%): A basic Flask server that has a REST API, (to perform CRUD operations), one database table and accompanying web interface, using AJAX calls, to perform these CRUD operations
 2. Level 2 (45-50%): As above, with more than one database table
 3. Level 3 (50-55%): As above, with authorisation (logging in) 50%-55%
 
@@ -33,7 +33,7 @@ In the game itself, a MySQL database contains a number of pre-loaded players, an
 
 ## Technical Aspects
 
-To get up and running I used a light [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) template that I had previously created on a project called [Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html). The Jinja2 templating engine that comes with Flask has been utilised just to reduce the number of HTML pages that require editing, and [jQuery](https://api.jquery.com/) provided a quick way to provide user interactivity.
+To get up and running I used a light [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) template that I had previously created on a project called [Awayday](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html). The Jinja2 templating engine that comes with Flask has been utilised just to reduce the number of HTML pages that require editing, and [jQuery](https://api.jquery.com/) provided a quick way to provide user interactivity. Pretty much all of the Bootstrap CSS styling and Flask interactivity on this website was taken from the Awayday project, with the occasional visit to ChatGPT when something wasn't working sufficiently.
 
 - Flask, MySQL, hosting, etc., PyMySQL as I was having some trouble with mysql-connector
 
@@ -54,40 +54,69 @@ A properly implemented star schema would become essential if more data was to be
 ### API Documentation
 
 Bloodlinealpha (2023) "NHL Stats and Analysis Expert" [Github](https://github.com/bloodlinealpha/NHL-Stats-and-Analysis-Expert/blob/main/nhlAPI.json)
+\
 Hynes, D. (2023) "New API documentation" [Gitlab: nhl-api](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md)
+\
 National Hockey League (2023) [Individual Player Statistics endpoint](https://api-web.nhle.com/v1/player/8477846/landing) (Note that I've pre-populated this link with a player ID)
+\
 National Hockey League (2023) [Master Player Directory endpoint](https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000)
+\
 National Hockey League (2023) "NHL Stats". [NHL.com](https://www.nhl.com/stats/)
+\
 r/hockey (2003) "NHL Down - Looking for Alternatives". [Reddit](https://www.reddit.com/r/hockey/comments/17qu8by/nhl_api_down_looking_for_alternatives_software/)
+\
 Sidwar, K. (2023) "Reverse Engineering an API" [YouTube](https://www.youtube.com/watch?v=wjo68W2qkqw)
+\
 Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-Reference)
 
 ### Core Documentation and Software
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+\
 [Flask docs](https://flask.palletsprojects.com/en/2.0.x/)
+\
 [Font Awesome](https://fontawesome.com/)
+\
 [Google Fonts](https://fonts.google.com/specimen/Titillium+Web)
+\
 [jQuery](https://api.jquery.com/)
+\
 [PyMySQL](https://pypi.org/project/pymysql/)
+\
 [PythonAnywhere](https://help.pythonanywhere.com/pages/Flask/)
+\
 [Requests Library](https://requests.readthedocs.io/en/latest/user/quickstart/)
 
 ### Code Help and Useful Tools
 
 Beatty, A. (2003) "Data Representation" [Github](https://github.com/andrewbeattycourseware/datarepresentation)
+\
 [ChatGPT](https://chat.openai.com/)
+\
 [GitHub CoPilot](https://copilot.github.com/)
+\
 [Getting a Favicon to work in Flask](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
+\
 [Templates in Flask](https://flask.palletsprojects.com/en/3.0.x/tutorial/templates/)
+\
 [Flash messages in Flask](https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/)
+\
 [Accessing request data in Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#accessing-request-data)
-[Upper Deck E-Pack](https://www.upperdeckepack.com/) was my inspiration for doing a card-based game
+\
+[Upper Deck E-Pack](https://www.upperdeckepack.com/)
+\
 [Favicon Generator](https://favicon.io/favicon-converter/)
+\
 [Flask to MySQL setup](https://www.askpython.com/python-modules/flask/flask-mysql-database)
+\
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
+\
+Saint, S. (2022) "Awayday". [Github](https://github.com/kiehozero/away-day)
+\
+Saint, S. (2022) "Awayday". [Github Pages](https://kiehozero.github.io/away-day/index.html)
+\
 Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
+\
 Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
+\
 W3 Schools (2023) "jQuery tutorial". [W3Schools](https://www.w3schools.com/jquery/default.asp)
-[here](https://kiehozero.github.io/away-day/index.html)
-[Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://

@@ -63,6 +63,18 @@ $(document).ready(function(){
         };
     });
 
+     /* Same as above but for collection page */
+     $('.coll-flip').click(function(){
+         $('.picBox').toggleClass('d-none');
+         $('.statBox').toggleClass('d-none');
+         /* Logic taken from W3: https://www.w3schools.com/howto/howto_js_toggle_text.asp */
+         if ($('.coll-flip').innerText == 'View Picture') {
+            $('.coll-flip').innerText = 'Show Stats';
+         } else {
+            $('.coll-flip').innerText = 'View Picture';
+         };
+     });
+
     /* Flip button to show either stats or picture of opponent's card, but only displayed when result is non-blank */
     var oppo = document.getElementById('flipOppo');
     $('#flipOppo').click(function(){

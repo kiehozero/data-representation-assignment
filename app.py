@@ -14,16 +14,31 @@ db = pymysql.connect(
     database=config.keys['db']
 )
 
+# The actual number of players in the DB as of 28/12/2023
+lenPlayers = 2190
+# The number of players I managed to import before an error (see README)
+storedPlayers = 115
+
 data = []
 
 
-# Home page
+# NOT DONE Home page
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    mycard = []
+    randcard = []
+    # load all players from collection DB, add dropdowns
+    # load random player from all_players DB
+    return render_template('index.html', mycard=mycard, randcard=randcard)
 
 
-# Show collection
+# TEMPLATE FOR ABOVE Return card from collection
+@app.route('/get/<int:id>', methods=['GET'])
+def get_card(id):
+    return jsonify(data[id])
+
+
+# retrieve all cards from collection DB
 @app.route('/collection', methods=['GET'])
 def get_cards():
     collection = []
@@ -31,22 +46,13 @@ def get_cards():
     sql_select = '''SELECT * FROM collection'''
     cursor.execute(sql_select)
     players = cursor.fetchall()
-    # Convert to lists without Primary Key
     for player in players:
         pl = list(player)
-        pl.pop(0)
         collection.append(pl)
-    print(collection)
     return render_template('collection.html', collection=collection)
 
 
-# Return card from collection
-@app.route('/get/<int:id>', methods=['GET'])
-def get_card(id):
-    return jsonify(data[id])
-
-
-# Update - What can I do for an update operation?
+# NOT DONE Update - What can I do for an update operation?
 @app.route('/collection/<int:id>', methods=['PUT'])
 def update_card(index):
     # Get the updated data from the request
@@ -60,17 +66,18 @@ def update_card(index):
     return redirect(url_for('collection'))
 
 
-# Delete card from collection
+# NOT DONE Delete card from collection
 @app.route('/collection/<int:id>', methods=['DELETE'])
-def delete_card(index):
-    # Delete the data at the specified index
-    del data[index]
+def delete_card(id):
+    cursor = db.cursor()
+    sql_delete = '''DELETE FROM collection WHERE id = %s'''
+    cursor.exeter(sql_delete, id)
     # Add flash confirming deletion
     print('Card deleted.')
     return redirect(url_for('collection'))
 
 
-# Retrieve a random player from all_players DB and return stats
+# NOT DONE, MOVE TO GET_INDEX Retrieve a random player from all_players DB and return stats
 def getRandPlayer(storedPlayers):
     randPlayer = random.randint(0, storedPlayers)
     cursor = db.cursor()
@@ -100,7 +107,7 @@ def getRandPlayer(storedPlayers):
     print(reqdData)
 
 
-# Add card to collection
+# NOT DONE Add card to collection
 @app.route('/add_card', methods=['POST'])
 def add_card():
     # Add the data to the DB
@@ -115,6 +122,7 @@ def add_card():
     return redirect(url_for('index'))
 
 
+# NOT DONE (NOT MARKED), catch all for invalid URLs
 @app.route('/invalid', methods=['GET'])
 def invalid():
     # need a catch-all for invalid URLs
