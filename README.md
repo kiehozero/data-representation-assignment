@@ -62,10 +62,12 @@ r/hockey (2003) "NHL Down - Looking for Alternatives". [Reddit](https://www.redd
 Sidwar, K. (2023) "Reverse Engineering an API" [YouTube](https://www.youtube.com/watch?v=wjo68W2qkqw)
 Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-Reference)
 
-### Core Documentation
+### Core Documentation and Software
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 [Flask docs](https://flask.palletsprojects.com/en/2.0.x/)
+[Font Awesome](https://fontawesome.com/)
+[Google Fonts](https://fonts.google.com/specimen/Titillium+Web)
 [jQuery](https://api.jquery.com/)
 [PyMySQL](https://pypi.org/project/pymysql/)
 [PythonAnywhere](https://help.pythonanywhere.com/pages/Flask/)
@@ -73,6 +75,7 @@ Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-R
 
 ### Code Help and Useful Tools
 
+Beatty, A. (2003) "Data Representation" [Github](https://github.com/andrewbeattycourseware/datarepresentation)
 [ChatGPT](https://chat.openai.com/)
 [GitHub CoPilot](https://copilot.github.com/)
 [Getting a Favicon to work in Flask](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
@@ -80,14 +83,11 @@ Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-R
 [Flash messages in Flask](https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/)
 [Accessing request data in Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#accessing-request-data)
 [Upper Deck E-Pack](https://www.upperdeckepack.com/) was my inspiration for doing a card-based game
-W3 Schools'[jQuery tutorial](https://www.w3schools.com/jquery/default.asp) was simply invaluable. Javascript is by far my weakest skill in this course, pretty much every mistake I made in writing JS or jQuery code was fixed by a part of that tutorial.
 [Favicon Generator](https://favicon.io/favicon-converter/)
-Beatty, A. (2003) "Data Representation" [Github](https://github.com/andrewbeattycourseware/datarepresentation)
 [Flask to MySQL setup](https://www.askpython.com/python-modules/flask/flask-mysql-database)
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
 Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
-[Google Fonts](https://fonts.google.com/specimen/Titillium+Web)
-[Font Awesome](https://fontawesome.com/)
+W3 Schools (2023) "jQuery tutorial". [W3Schools](https://www.w3schools.com/jquery/default.asp)
 [here](https://kiehozero.github.io/away-day/index.html)
-[Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html)
+[Awaydays](https://github.com/kiehozero/away-day), which is hosted [here](https://

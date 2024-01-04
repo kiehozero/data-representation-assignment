@@ -83,6 +83,52 @@ def delete_card(index):
     return redirect(url_for('collection'))
 
 
+# Retrieve a random player from all_players DB and return stats
+def getRandPlayer(storedPlayers):
+    randPlayer = random.randint(0, storedPlayers)
+    cursor = db.cursor()
+
+    # Retrieve player from DB
+    sql_select = '''SELECT player_id FROM all_players WHERE id = %s'''
+    cursor.execute(sql_select, randPlayer)
+    chosenPlayer = cursor.fetchone()[0]
+
+    # Add required data to dictionary
+    reqdData = {
+        'playerId': randPlayerData['playerId'],
+        # Default items selected where multiple languages are available
+        'firstName': randPlayerData['firstName']['default'],
+        'lastName': randPlayerData['lastName']['default'],
+        'position': randPlayerData['position'],
+        'fullTeamName': randPlayerData['fullTeamName']['default'],
+        'teamLogo': randPlayerData['teamLogo'],
+        'headshot': randPlayerData['headshot'],
+        # Source stats for final season in seasonTotals dictionary
+        'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
+        'goals': randPlayerData['seasonTotals'][-1]['goals'],
+        'assists': randPlayerData['seasonTotals'][-1]['assists'],
+        'points': randPlayerData['seasonTotals'][-1]['points'],
+        'penaltyMinutes': randPlayerData['seasonTotals'][-1]['pim']
+    }
+    print(reqdData)
+
+
+# Call all players from collection table in DB - move to app.py
+def getCollection():
+    collection = []
+    cursor = db.cursor()
+    sql_select = '''SELECT * FROM collection'''
+    cursor.execute(sql_select)
+    players = cursor.fetchall()
+    # Convert to lists without Primary Key
+    for player in players:
+        pl = list(player)
+        pl.pop(0)
+        collection.append(pl)
+    return collection
+
+
+
 @app.route('/invalid', methods=['GET'])
 def invalid():
     # need a catch-all for invalid URLs

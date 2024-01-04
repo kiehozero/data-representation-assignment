@@ -21,6 +21,8 @@ db = pymysql.connect(
 
 # The actual number of players in the DB as of 28/12/2023
 lenPlayers = 2190
+# The number of players I managed to import before an error
+storedPlayers = 115
 
 
 # API call to get all players for DB population
@@ -89,70 +91,6 @@ def addPlayerStats():
     db.close()
 
 
-# Retrieve a random player from DB and return stats from API call
-def getRandPlayer(lenPlayers):
-    randPlayer = random.randint(0, lenPlayers)
-    cursor = db.cursor()
-
-    # Retrieve player from DB
-    sql_select = '''SELECT player_id FROM players WHERE id = %s'''
-    cursor.execute(sql_select, randPlayer)
-    chosenPlayer = cursor.fetchone()[0]
-
-    # API call to get player data
-    callRandPlayer = statUrl + str(chosenPlayer) + '/landing'
-    response = requests.get(callRandPlayer)
-    randPlayerData = response.json()
-
-    # Add required data to dictionary
-    reqdData = {
-        'playerId': randPlayerData['playerId'],
-        # Default items selected where multiple languages are available
-        'firstName': randPlayerData['firstName']['default'],
-        'lastName': randPlayerData['lastName']['default'],
-        'position': randPlayerData['position'],
-        'fullTeamName': randPlayerData['fullTeamName']['default'],
-        'teamLogo': randPlayerData['teamLogo'],
-        'headshot': randPlayerData['headshot'],
-        # Source stats for final season in seasonTotals dictionary
-        'games': randPlayerData['seasonTotals'][-1]['gamesPlayed'],
-        'goals': randPlayerData['seasonTotals'][-1]['goals'],
-        'assists': randPlayerData['seasonTotals'][-1]['assists'],
-        'points': randPlayerData['seasonTotals'][-1]['points'],
-        'penaltyMinutes': randPlayerData['seasonTotals'][-1]['pim']
-    }
-    print(reqdData)
-
-
-# Call all players from collection table in DB - move to app.py
-def getCollection():
-    collection = []
-    cursor = db.cursor()
-    sql_select = '''SELECT * FROM collection'''
-    cursor.execute(sql_select)
-    players = cursor.fetchall()
-    # Convert to lists without Primary Key
-    for player in players:
-        pl = list(player)
-        pl.pop(0)
-        collection.append(pl)
-    return collection
-
-
 if __name__ == '__main__':
-    book = {
-        'Author': 'Michel Foucault',
-        'Title': 'Discipline and Punish',
-        'Price': 100
-    }
-    bookdiff = {
-        'Price': 85
-    }
-    # addPlayerIds()
+    addPlayerIds()
     addPlayerStats()
-    # getRandPlayer(lenPlayers)
-    # getCollection()
-
-    # print(createBook(book))
-    # print(updateBook(345, bookdiff))
-    # print(deleteBook(324))
