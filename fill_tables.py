@@ -1,7 +1,6 @@
 # Implement all the NHL API calls as functions to the server
 import config
 import pymysql
-import random
 import requests
 
 '''API URLs - listUrl is used to populate the DB, statUrl is used to get player
@@ -21,7 +20,7 @@ db = pymysql.connect(
 
 # The actual number of players in the DB as of 28/12/2023
 lenPlayers = 2190
-# The number of players I managed to import before an error
+# The number of players I managed to import before an error (see README)
 storedPlayers = 115
 
 
@@ -64,13 +63,13 @@ def addPlayerStats():
         response = requests.get(callPlayer)
         playerData = response.json()
 
-        # Add required items to list and push to MySQL
-        # Default items selected where multiple languages are available
-        # Source stats for final season in seasonTotals dictionary
-        # I've noticed that some players have no entry for fullTeamName
+        '''Add required items to list and push to MySQL Default items selected
+        where multiple languages are available. Source stats for final season
+        in seasonTotals dictionary.'''
         reqdData = [playerData['playerId'], playerData['firstName']['default'],
                     playerData['lastName']['default'],
                     playerData['position'],
+                    # Error on this item documented in README
                     playerData['fullTeamName']['default'],
                     playerData['teamLogo'], playerData['headshot'],
                     playerData['seasonTotals'][-1]['gamesPlayed'],
