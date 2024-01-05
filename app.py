@@ -40,6 +40,8 @@ def index():
     cursor.execute(all_select, rand_all)
     player_two = cursor.fetchone()
 
+    cursor.close()
+
     return render_template(
         'index.html',
         player_one=player_one, player_two=player_two)
@@ -61,20 +63,18 @@ def add_card():
 
 # Add required data to dictionary
 # reqdData = {
-    # 'playerId': chosenPlayer['playerId'],
-    # # Default items selected where multiple languages are available
-    # 'firstName': chosenPlayer['firstName']['default'],
-    # 'lastName': chosenPlayer['lastName']['default'],
-    # 'position': chosenPlayer['position'],
-    # 'fullTeamName': chosenPlayer['fullTeamName']['default'],
-    # 'teamLogo': chosenPlayer['teamLogo'],
-    # 'headshot': chosenPlayer['headshot'],
-    # # Source stats for final season in seasonTotals dictionary
-    # 'games': chosenPlayer['seasonTotals'][-1]['gamesPlayed'],
-    # 'goals': chosenPlayer['seasonTotals'][-1]['goals'],
-    # 'assists': chosenPlayer['seasonTotals'][-1]['assists'],
-    # 'points': chosenPlayer['seasonTotals'][-1]['points'],
-    # 'penaltyMinutes': chosenPlayer['seasonTotals'][-1]['pim']
+    # 'playerId': player_two[1],
+    # 'first_name': player_two[2],
+    # 'last_name': player_two[3],
+    # 'position': player_two[4],
+    # 'team': player_two[5],
+    # 'logo_url': player_two[6],
+    # 'headshot_url': player_two['headshot'],
+    # 'games': player_two['seasonTotals'][-1]['gamesPlayed'],
+    # 'goals': player_two['seasonTotals'][-1]['goals'],
+    # 'assists': player_two['seasonTotals'][-1]['assists'],
+    # 'points': player_two['seasonTotals'][-1]['points'],
+    # 'penaltyMinutes': player_two['seasonTotals'][-1]['pim']
     # }
 
 
