@@ -34,6 +34,11 @@ body {
     vertical-align: middle;
 }
 
+.btn a #againButton {
+    color: white !important;
+    text-decoration: none !important;
+}
+
 /* Footer */
 
 footer {
@@ -74,7 +79,8 @@ footer {
     margin: 10px;
 }
 
-.btn.stat-select {
+.btn.stat-select,
+.btn.oppo-select {
     /* Chaining the classes overrides Bootstrap's default styling */
     font-weight: bold;
 }

@@ -95,25 +95,6 @@ def get_cards():
     return render_template('collection.html', collection=collection)
 
 
-''' Do I need a route for play again to redirect to index? You need one for
-"Add Card" if you win, but you'd need another if the player doesn't win... '''
-
-
-# NOT DONE Update - What can I do for an update operation?
-@app.route('/collection/<int:id>', methods=['PUT'])
-def update_card(index):
-    data = []
-    # Get the updated data from the request
-    updated_data = request.json
-
-    # Update the data at the specified index
-    data[index] = updated_data
-
-    # Add flash confirming update
-    print('Data updated successfully')
-    return redirect(url_for('collection'))
-
-
 # NOT DONE Delete card from collection
 @app.route('/collection/<int:id>', methods=['DELETE'])
 def delete_card(id):

@@ -1,31 +1,35 @@
 $(document).ready(function(){
     /* Use getElementById to store each card's chosen stat */
-    var card1stat = 7;
-    var card2stat = 5;
+    var card1stat = '';
+    var card2stat = '';
     var result = '';
-    var statChoice = [];
 
     /* Conditional to determine result of match */
     $('#playButton').click(function(){
-        /* StatChoice stores the stat chosen by the user, then use it to determine the result */
-        /* Add IF statement to check if statChoice is empty, if so, display 'Please select a stat' */
-        $('#card2').removeClass('d-none');
-        $('#playButton').removeClass('btn-dark');
-        if (card1stat > card2stat) {
-            result = 'YOU WIN!';
-            $('#playButton').addClass('btn-success');
-            $('#addCard').removeClass('d-none');
-            /* Add logic - if ID is aleady in DB, display 'You already have this card' and disable button */
-        } else if (card1stat == card2stat) {
-            result = 'DRAW!';
-            $('#playButton').addClass('btn-secondary');
-        } else if (card1stat < card2stat) {
-            result = 'YOU LOSE!';
-            $('#playButton').addClass('btn-danger');
-        };
-        document.getElementById('playButton').innerText = result;
-        document.getElementById('againButton').classList.remove('d-none');
-        document.getElementById('flipOppo').classList.remove('d-none');
+        /* if the user has not selected a stat, display an alert */
+        if (card1stat == '' ) {
+            alert('Please select a stat');
+        }
+        /* Use the stat chosen by the user, then use it to determine the result */
+        else {
+            $('#card2').removeClass('d-none');
+            $('#playButton').removeClass('btn-dark');
+            if (card1stat > card2stat) {
+                result = 'YOU WIN!';
+                $('#playButton').addClass('btn-success');
+                $('#addCard').removeClass('d-none');
+                /* Add logic - if ID is aleady in DB, display 'You already have this card' and disable button */
+            } else if (card1stat == card2stat) {
+                result = 'DRAW!';
+                $('#playButton').addClass('btn-secondary');
+            } else if (card1stat < card2stat) {
+                result = 'YOU LOSE!';
+                $('#playButton').addClass('btn-danger');
+            };
+            document.getElementById('playButton').innerText = result;
+            document.getElementById('againButton').classList.remove('d-none');
+            document.getElementById('flipOppo').classList.remove('d-none');
+        }
     });
 
     /* Play Again button to reset the game's variables and visible styles, pretty much the opposite of the above */
@@ -93,31 +97,28 @@ $(document).ready(function(){
         $('.stat-select').addClass('btn-info');
         $(this).removeClass('btn-info');
         $(this).addClass('btn-warning');
-        /* got this solution from jQuery text function docs and StackOverflow (see README) */
+        /* Got this solution from jQuery text function docs and StackOverflow (see README) */
         card1stat = $(this).text();
         card1id = $(this).attr('id');
-        /* can be removed, just for testing, it also causes an error in how the win/loss button is styled above,
-        although it will be useful once you start pushing items up to SQL
-        card1stat = $(this).parent().prev().text(); */
-        console.log(card1stat);
-        console.log(card1id);
+        console.log(card1id + ": " + card1stat);
+        /* Using the selected stat to locate the stat from the other player for comparison */
         if (card1id == 'card_a') {
-            card2stat = $('#oppo_a').text();
-            card2id = $('#oppo_a').attr('id');
+            card2stat = $('#oppo_a').text()
+            card2id = $('#oppo_a').attr('id')
         } else if (card1id == 'card_b') {
-            card2stat = $('#oppo_b').text();
-            card2id = $('#oppo_b').attr('id');
+            card2stat = $('#oppo_b').text()
+            card2id = $('#oppo_b').attr('id')
+            /* BUGFIX: I hate JavaScript. Literally deleting a few semi-colons rectified this */
         } else if (card1id == 'card_c') {
-            card2stat = $('#oppo_c').text();
-            card2id = $('#oppo_c').attr('id');
+            card2stat = $('#oppo_c').text()
+            card2id = $('#oppo_c').attr('id')
         } else if (card1id == 'card_d') {
-            card2stat = $('#oppo_d').text();
-            card2id = $('#oppo_d').attr('id');
+            card2stat = $('#oppo_d').text()
+            card2id = $('#oppo_d').attr('id')
         } else if (card1id == 'card_e') {
-            card2stat = $('#oppo_e').text();
-            card2id = $('#oppo_e').attr('id');
+            card2stat = $('#oppo_e').text()
+            card2id = $('#oppo_e').attr('id')
         };
-        console.log(card2stat);
+        console.log(card2id + ": " + card2stat);
     });
-    /* need to add function that checks what stat has been selected, and seleected corresponding stat from opponent's card */
 });

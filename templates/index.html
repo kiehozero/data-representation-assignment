@@ -6,7 +6,7 @@
 
 {% block h1title %}Welcome to the National Hockey League's Top Trumps game{% endblock %}
 {% block pagedesc %}
-	Use the drop-down to select a player from your collection, and click 'Show Stats' to choose a statistic to use.<br>
+	Click 'Show Stats' to choose a statistic to use for you random player. If you want to choose another player, just reload the page for a new match.<br>
 	Click the 'PLAY' button to reveal your opponent: if your player has a higher statistic, you win your opponent's card!
 {% endblock %}
 
@@ -46,7 +46,9 @@
 <!-- Play/Result Buttons -->
 <div class='col-2 d-block' id='play'>
 	<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton'>PLAY</button>
-	<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>PLAY AGAIN</button>
+	<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>
+		<a href='{{ url_for("index") }}'>PLAY AGAIN</a>
+	</button>
 </div>
 
 <!-- Randomly-generated card -->
@@ -68,11 +70,11 @@
 		<div class='statOppo d-none'>
 			<!-- DB-generated statistics here, with a button per item -->
 			<div class='row'>
-				<div class='stat-header'>Games Played: <button type='button' id="oppo_a" class='btn btn-info stat-select'>{{ player_one[8] }}</button></div>
-				<div class='stat-header'>Goals: <button type='button' id="oppo_b" class='btn btn-info stat-select'>{{ player_two[9] }}</button></div>
-				<div class='stat-header'>Assists: <button type='button' id="oppo_c" class='btn btn-info stat-select'>{{ player_two[10] }}</button></div>
-				<div class='stat-header'>Points: <button type='button' id="oppo_d" class='btn btn-info stat-select'>{{ player_two[11] }}</button></div>
-				<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_e" class='btn btn-info stat-select'>{{ player_two[12] }}</button></div>
+				<div class='stat-header'>Games Played: <button type='button' id="oppo_a" class='btn btn-info oppo-select'>{{ player_one[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' id="oppo_b" class='btn btn-info oppo-select'>{{ player_two[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' id="oppo_c" class='btn btn-info oppo-select'>{{ player_two[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' id="oppo_d" class='btn btn-info oppo-select'>{{ player_two[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_e" class='btn btn-info oppo-select'>{{ player_two[12] }}</button></div>
 			</div>
 		</div>
 

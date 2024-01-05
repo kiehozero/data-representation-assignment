@@ -6,8 +6,7 @@ A repository for the final assignment in ATU Data Representation, submitted in t
 
 ### Requirements
 
-- Create a Web application in Flask that has a RESTful API, the application should link to one or more database tables.
-- Create the web pages that can consume the API. I.e. performs CRUD operations on the data.
+Create a Web application in Flask that has a RESTful API, the application should link to one or more database tables. Also create the web pages that can consume the API, i.e. performs CRUD operations on the data.
 
 ### Assessment strategy
 
@@ -28,9 +27,6 @@ The final product in this assignment is a Top Trumps-style game that takes data 
 
 In the game itself, a MySQL table contains a number of pre-loaded players, and a user can pick which particular card and statistic they wish to play. A second  table in the same database contains a larger number of players, one of which is selected at random and presented visually as a second card. If the user's chosen card has a higher number in the chosen statistic, the user wins the other card and can choose whether to add it to the database.
 
-- CREATE/UPDATE: if you win you get to the add the card to your collection, ability to choose favourites which appear at the top of the list?
-- DELETE: can delete cards from your collection
-
 ## Technical Aspects
 
 To get up and running I used a light [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) template that I had previously created on a project called [Awayday](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html). The Jinja2 templating engine that comes with [Flask](https://flask.palletsprojects.com/en/3.0.x/templating/) has been utilised just to reduce the number of HTML pages that require editing, and [jQuery](https://api.jquery.com/) provided a quick way to provide user interactivity. Pretty much all of the Bootstrap CSS styling and Flask interactivity on this website was taken from the Awayday project, with the occasional visit to ChatGPT when something wasn't working sufficiently.
@@ -41,13 +37,15 @@ The database is built on [MySQL](https://www.mysql.com/) and [PyMySQL](https://p
 
 The NHL changed a large number of endpoints and storage methods during Autumn 2023, causing a minor panic online among some users at [r/Hockey](https://www.reddit.com/r/hockey/) and some Discord channels that focus on hockey statistics. This API remains under revision by the league, and it looks like they have yet to fully re-structure the data in a uniform manner. I've noticed for some players that 'position' is sometimes listed as 'positionCode', while others have differences between 'teamName' and 'fullTeamName'. There are also differences between column names in different tables, and some players taken from the active player list who do not show up in the player stats engine when their ID code is showing up. Included in the reference section are some discussions and ad-hoc documentation that third-party users noticed themselves, some of these discussions were of enormous use in getting this project off the ground, as the NHL have yet to release officialy documentation.
 
-## Proposed Improvements
+## Proposed Improvements and Bugfixess
 
 At present the addAllPlayers function is run on an ad-hoc basis. An improvement here would be to implement a delete-and-insert process to perioducally recreate the table with the latest available players. If the script at present is run, it will simply add the same values, while deleting all records and starting again creates a new set of primary keys. At present, no records are updated from the API once they are added to the database for this project, so as the season progresses the likelihood of a user winning games will decrease, so a call to the API to replace stored players would become crucial.
 
 The API hosts a lot of data and this product only references a few basic statistics, solely from the perspective that the higher number is better. An option to select a wider range of statistics for different positions, for example hits and blocks for defenders, or save percentage and shutouts for netminders, would more accurately reflect the value of each player's numbers. Indeed, there is currently a line in the database creation code that specifically excludes netminders as their core season statistics do not match those of all other positions.
 
 A properly implemented star schema would become essential if more data was to be added to this product. At present the API call takes the team logo for each player, a star schema with team information will allow for more efficient storage of this data (storing it once for each 32 teams, rather than a team logo for all 2200 players).
+
+A bug that I identified was that on the Assists, Points and Penalty Minutes categories, the comparison doesn't seem to work and produces a winning result each time. I looked through the jQuery and could not work this out, but deleting semi-colons from the end of if statements seemed to work, proving that I will never truly understand Javascript.
 
 ## References
 
