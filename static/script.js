@@ -3,12 +3,12 @@ $(document).ready(function(){
     var card1stat = 7;
     var card2stat = 5;
     var result = '';
+    var statChoice = [];
 
     /* Conditional to determine result of match */
     $('#playButton').click(function(){
         /* StatChoice stores the stat chosen by the user, then use it to determine the result */
         /* Add IF statement to check if statChoice is empty, if so, display 'Please select a stat' */
-        var statChoice = [];
         $('#card2').removeClass('d-none');
         $('#playButton').removeClass('btn-dark');
         if (card1stat > card2stat) {
@@ -81,9 +81,9 @@ $(document).ready(function(){
         $('.picOppo').toggleClass('d-none');
         $('.statOppo').toggleClass('d-none');
         if (oppo.innerText == 'View Picture') {
-            oppo.innerText = 'View Stats';
+            oppo.innerText == 'View Stats';
         } else {
-            oppo.innerText = 'View Picture';
+            oppo.innerText == 'View Picture';
         };
     });
 
@@ -93,9 +93,31 @@ $(document).ready(function(){
         $('.stat-select').addClass('btn-info');
         $(this).removeClass('btn-info');
         $(this).addClass('btn-warning');
+        /* got this solution from jQuery text function docs and StackOverflow (see README) */
+        card1stat = $(this).text();
+        card1id = $(this).attr('id');
         /* can be removed, just for testing, it also causes an error in how the win/loss button is styled above,
         although it will be useful once you start pushing items up to SQL
-        card1stat = $(this).parent().prev().text();
-        console.log(card1stat); */
+        card1stat = $(this).parent().prev().text(); */
+        console.log(card1stat);
+        console.log(card1id);
+        if (card1id == 'card_a') {
+            card2stat = $('#oppo_a').text();
+            card2id = $('#oppo_a').attr('id');
+        } else if (card1id == 'card_b') {
+            card2stat = $('#oppo_b').text();
+            card2id = $('#oppo_b').attr('id');
+        } else if (card1id == 'card_c') {
+            card2stat = $('#oppo_c').text();
+            card2id = $('#oppo_c').attr('id');
+        } else if (card1id == 'card_d') {
+            card2stat = $('#oppo_d').text();
+            card2id = $('#oppo_d').attr('id');
+        } else if (card1id == 'card_e') {
+            card2stat = $('#oppo_e').text();
+            card2id = $('#oppo_e').attr('id');
+        };
+        console.log(card2stat);
     });
+    /* need to add function that checks what stat has been selected, and seleected corresponding stat from opponent's card */
 });

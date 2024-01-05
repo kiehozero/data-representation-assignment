@@ -17,24 +17,24 @@
 	<div class='rounded border-dark'>
 		<!-- replace with DB-generated name -->
 		<h4>
-			{{ player[2] }} {{ player[3] }}
+			<b>{{ player_one[2] }} {{ player_one[3] }}</b>
 		</h4>
 
 		<!-- Photo section -->
 		<div class='picBox'>
-				<h6>{{ player[4] }}, {{ player[5] }}</h6>
-			    <img class="img-fluid" src='{{ player[7] }}'>
+				<h6>{{ player_one[4] }}, {{ player_one[5] }}</h6>
+			    <img class="img-fluid" src='{{ player_one[7] }}'>
 		</div>
 
 		<!-- Stats section -->
 		<div class='statBox d-none'>
 			<!-- DB-generated statistics here, with a button per item -->
 			<div class='row'>
-				<div class='stat-header'>Games Played: <button type='button' id="card_gp" class='btn btn-info stat-select'>{{ player[8] }}</button></div>
-				<div class='stat-header'>Goals: <button type='button' id="card_goals" class='btn btn-info stat-select'>{{ player[9] }}</button></div>
-				<div class='stat-header'>Assists: <button type='button' id="card_asts" class='btn btn-info stat-select'>{{ player[10] }}</button></div>
-				<div class='stat-header'>Points: <button type='button' id="card_pts" class='btn btn-info stat-select'>{{ player[11] }}</button></div>
-				<div class='stat-header'>Penalty Minutes: <button type='button' id="card_pim" class='btn btn-info stat-select'>{{ player[12] }}</button></div>
+				<div class='stat-header'>Games Played: <button type='button' id="card_a" class='btn btn-info stat-select'>{{ player_one[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' id="card_b" class='btn btn-info stat-select'>{{ player_one[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' id="card_c" class='btn btn-info stat-select'>{{ player_one[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' id="card_d" class='btn btn-info stat-select'>{{ player_one[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id="card_e" class='btn btn-info stat-select'>{{ player_one[12] }}</button></div>
 			</div>
 		</div>
 
@@ -45,36 +45,36 @@
 
 <!-- Play/Result Buttons -->
 <div class='col-2 d-block' id='play'>
-	<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton' onclick="callPlayer()">PLAY</button>
+	<button type='button' class='btn btn-dark align-self-center col-10 offset-1' id='playButton'>PLAY</button>
 	<button type='button' class='btn btn-dark align-self-center col-10 offset-1 d-none' id='againButton'>PLAY AGAIN</button>
 </div>
 
 <!-- Randomly-generated card -->
 <div class='col-4' id='card2'>
 	<div class='rounded border-dark'>
-		<!-- replace with API-generated name -->
-		<h4>PLAYER GENERATED NAME</h4>
-		<div class='none'><!-- here just to store the iD of the random player. In reality, can we pass
+		<h4>
+			<b>{{ player_two[2] }} {{ player_two[3] }}</b>
+		</h4>
+		<div class='none'><!-- here just to store the ID of the random player. In reality, can we pass
 			the query result that generates this card right through to the Add Card stage? --></div>
 
 		<!-- Photo section -->
 		<div class="picOppo">
-			<!-- replace with API-generated image -->
-			<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
+			<h6>{{ player_two[4] }}, {{ player_two[5] }}</h6>
+			<img class="img-fluid" src='{{ player_two[7] }}'></div>
 		</div>
 
 		<!-- Stats section -->
 		<div class='statOppo d-none'>
-			<!-- API-generated statistics here, with a button per item -->
+			<!-- DB-generated statistics here, with a button per item -->
 			<div class='row'>
-				<div class='stat-header'>Games Played: <button type='button' id="oppo_gp" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Goals: <button type='button' id="oppo_goals" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Assists: <button type='button' id="oppo_asts" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Points: <button type='button' id="oppo_pts" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_pim" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Games Played: <button type='button' id="oppo_a" class='btn btn-info stat-select'>{{ player_one[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' id="oppo_b" class='btn btn-info stat-select'>{{ player_two[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' id="oppo_c" class='btn btn-info stat-select'>{{ player_two[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' id="oppo_d" class='btn btn-info stat-select'>{{ player_two[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_e" class='btn btn-info stat-select'>{{ player_two[12] }}</button></div>
 			</div>
 		</div>
-	</div>
 
 	<!-- Button to toggle between picture and statistics -->
 	<button type='button' class='btn btn-dark card-flip d-none' id='flipOppo'>View stats</button>

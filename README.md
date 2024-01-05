@@ -9,7 +9,7 @@ A repository for the final assignment in ATU Data Representation, submitted in t
 - Create a Web application in Flask that has a RESTful API, the application should link to one or more database tables.
 - Create the web pages that can consume the API. I.e. performs CRUD operations on the data.
 
-### Assessment strategy:
+### Assessment strategy
 
 1. Level 1 (40-45%): A basic Flask server that has a REST API, (to perform CRUD operations), one database table and accompanying web interface, using AJAX calls, to perform these CRUD operations
 2. Level 2 (45-50%): As above, with more than one database table
@@ -26,16 +26,16 @@ Plus (each point 0-10%):
 
 The final product in this assignment is a Top Trumps-style game that takes data from the statistical records of the National Hockey League. The League pushes a large amount of in-game and aggregated data to a number of APIs, hosted at [NHL Stats](https://www.nhl.com/stats/) and [NHL Edge](https://edge.nhl.com/). For the sake of this assignment, I accessed the active player API ([endpoint](https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000)) and the individual statistical player database ([endpoint](https://api-web.nhle.com/v1/player/8477846/landing)). The inspiration for this project originally came from [Upper Deck E-Pack](https://www.upperdeckepack.com/), a website where users can collect and trade sports and entertainment trading cards, after I attended an ice hockey game in Sweden and scanned a QR code for some free cards.
 
-In the game itself, a MySQL database contains a number of pre-loaded players, and a user can pick which particular card and statistic they wish to play. The latter API is then called to return a randomised player's statistics, which are presented visually as a second card. If the user's chosen card has a higher number in the chosen statistic, the user wins the other card and can choose whether to add it to the database.
+In the game itself, a MySQL table contains a number of pre-loaded players, and a user can pick which particular card and statistic they wish to play. A second  table in the same database contains a larger number of players, one of which is selected at random and presented visually as a second card. If the user's chosen card has a higher number in the chosen statistic, the user wins the other card and can choose whether to add it to the database.
 
 - CREATE/UPDATE: if you win you get to the add the card to your collection, ability to choose favourites which appear at the top of the list?
 - DELETE: can delete cards from your collection
 
 ## Technical Aspects
 
-To get up and running I used a light [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) template that I had previously created on a project called [Awayday](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html). The Jinja2 templating engine that comes with Flask has been utilised just to reduce the number of HTML pages that require editing, and [jQuery](https://api.jquery.com/) provided a quick way to provide user interactivity. Pretty much all of the Bootstrap CSS styling and Flask interactivity on this website was taken from the Awayday project, with the occasional visit to ChatGPT when something wasn't working sufficiently.
+To get up and running I used a light [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) template that I had previously created on a project called [Awayday](https://github.com/kiehozero/away-day), which is hosted [here](https://kiehozero.github.io/away-day/index.html). The Jinja2 templating engine that comes with [Flask](https://flask.palletsprojects.com/en/3.0.x/templating/) has been utilised just to reduce the number of HTML pages that require editing, and [jQuery](https://api.jquery.com/) provided a quick way to provide user interactivity. Pretty much all of the Bootstrap CSS styling and Flask interactivity on this website was taken from the Awayday project, with the occasional visit to ChatGPT when something wasn't working sufficiently.
 
-- Flask, MySQL, hosting, etc., PyMySQL as I was having some trouble with mysql-connector
+The database is built on [MySQL](https://www.mysql.com/) and [PyMySQL](https://pypi.org/project/pymysql/) is used to communicate CRUD requests from Flask.
 
 ### A Note on the API
 
@@ -73,13 +73,15 @@ Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-R
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 \
-[Flask docs](https://flask.palletsprojects.com/en/2.0.x/)
+[Flask documentation](https://flask.palletsprojects.com/en/3.0.x/)
 \
 [Font Awesome](https://fontawesome.com/)
 \
 [Google Fonts](https://fonts.google.com/specimen/Titillium+Web)
 \
 [jQuery](https://api.jquery.com/)
+\
+[MySQL](https://www.mysql.com/)
 \
 [PyMySQL](https://pypi.org/project/pymysql/)
 \
@@ -109,6 +111,8 @@ Beatty, A. (2003) "Data Representation" [Github](https://github.com/andrewbeatty
 \
 [Flask to MySQL setup](https://www.askpython.com/python-modules/flask/flask-mysql-database)
 \
+[jQuery text() method](https://api.jquery.com/text/)
+\
 [jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 \
 Saint, S. (2022) "Awayday". [Github](https://github.com/kiehozero/away-day)
@@ -119,4 +123,8 @@ Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/
 \
 Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
 \
-W3 Schools (2023) "jQuery tutorial". [W3Schools](https://www.w3schools.com/jquery/default.asp)
+User:'instanceof me' (2010) "How can I get the ID of an element using jQuery?" [StackOverflow](https://stackoverflow.com/questions/3239598/how-can-i-get-the-id-of-an-element-using-jquery#3239600)
+\
+W3Schools (2023) "jQuery attr() method". [W3Schools](https://www.w3schools.com/jquery/html_attr.asp)
+\
+W3Schools (2023) "jQuery tutorial". [W3Schools](https://www.w3schools.com/jquery/default.asp)

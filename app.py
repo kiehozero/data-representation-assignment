@@ -14,37 +14,68 @@ db = pymysql.connect(
     database=config.keys['db']
 )
 
-# The number of players I managed to import before an error (see README)
-# replace this with a SELECT COUNT(*) from all_players;
-storedPlayers = 115
 
-data = []
-
-
-# NOT DONE Home page
+# Home page - return cards from each table in DB and renders to index.html
 @app.route('/', methods=['GET'])
 def index():
     cursor = db.cursor()
-    # Generate a random player ID and retrieve the player from the DB
-    sql_count = '''SELECT COUNT(*) FROM collection'''
-    cursor.execute(sql_count)
-    num_rows = cursor.fetchone()[0]
-    rand_card = random.randint(1, num_rows)
+    # Generate a random player ID and retrieve player from collection
+    col_count = '''SELECT COUNT(*) FROM collection'''
+    cursor.execute(col_count)
+    col_rows = cursor.fetchone()[0]
+    rand_col = random.randint(1, col_rows)
 
-    sql_select = '''SELECT * FROM collection WHERE id = %s'''
-    cursor.execute(sql_select, rand_card)
-    player = cursor.fetchone()
-    randcard = []
-    # load random player from all_players DB
+    col_select = '''SELECT * FROM collection WHERE id = %s'''
+    cursor.execute(col_select, rand_col)
+    player_one = cursor.fetchone()
 
-    return render_template('index.html',
-                           player=player, randcard=randcard)
+    cursor = db.cursor()
+    # Generate a random player ID and retrieve player from all_players
+    all_count = '''SELECT COUNT(*) FROM all_players'''
+    cursor.execute(all_count)
+    all_rows = cursor.fetchone()[0]
+    rand_all = random.randint(1, all_rows)
+
+    all_select = '''SELECT * FROM all_players WHERE id = %s'''
+    cursor.execute(all_select, rand_all)
+    player_two = cursor.fetchone()
+
+    return render_template(
+        'index.html',
+        player_one=player_one, player_two=player_two)
 
 
-# TEMPLATE FOR ABOVE Return card from collection
-@app.route('/get/<int:id>', methods=['GET'])
-def get_card(id):
-    return jsonify(data[id])
+# NOT DONE Add card to collection
+@app.route('/add_card', methods=['POST'])
+def add_card():
+    # Add the data to the DB
+    some_data = {'player_id': request.json["player_id"],
+                 'player_name': request.json["player_name"]}
+    print(some_data)
+    '''data needs to be packaging up in the http request, and then in this
+    function you would refer to that as request.json, with the data being in
+    the form of a dictionary, so you'd have request.json['player_id'] etc.
+    '''
+    # Add flash confirming card added
+    return redirect(url_for('index'))
+
+# Add required data to dictionary
+# reqdData = {
+    # 'playerId': chosenPlayer['playerId'],
+    # # Default items selected where multiple languages are available
+    # 'firstName': chosenPlayer['firstName']['default'],
+    # 'lastName': chosenPlayer['lastName']['default'],
+    # 'position': chosenPlayer['position'],
+    # 'fullTeamName': chosenPlayer['fullTeamName']['default'],
+    # 'teamLogo': chosenPlayer['teamLogo'],
+    # 'headshot': chosenPlayer['headshot'],
+    # # Source stats for final season in seasonTotals dictionary
+    # 'games': chosenPlayer['seasonTotals'][-1]['gamesPlayed'],
+    # 'goals': chosenPlayer['seasonTotals'][-1]['goals'],
+    # 'assists': chosenPlayer['seasonTotals'][-1]['assists'],
+    # 'points': chosenPlayer['seasonTotals'][-1]['points'],
+    # 'penaltyMinutes': chosenPlayer['seasonTotals'][-1]['pim']
+    # }
 
 
 # Retrieve all cards from collection DB
@@ -58,6 +89,9 @@ def get_cards():
     for player in players:
         pl = list(player)
         collection.append(pl)
+
+    db.close()
+    cursor.close()
     return render_template('collection.html', collection=collection)
 
 
@@ -68,6 +102,7 @@ def get_cards():
 # NOT DONE Update - What can I do for an update operation?
 @app.route('/collection/<int:id>', methods=['PUT'])
 def update_card(index):
+    data = []
     # Get the updated data from the request
     updated_data = request.json
 
@@ -88,51 +123,6 @@ def delete_card(id):
     # Add flash confirming deletion
     print('Card deleted.')
     return redirect(url_for('collection'))
-
-
-# NOT DONE, MOVE TO GET_INDEX Retrieve a random player from all_players DB and return stats
-def getRandPlayer(storedPlayers):
-    randPlayer = random.randint(0, storedPlayers)
-    cursor = db.cursor()
-
-    # Retrieve player from DB
-    sql_select = '''SELECT player_id FROM all_players WHERE id = %s'''
-    cursor.execute(sql_select, randPlayer)
-    chosenPlayer = cursor.fetchone()[0]
-
-    # Add required data to dictionary
-    reqdData = {
-        'playerId': chosenPlayer['playerId'],
-        # Default items selected where multiple languages are available
-        'firstName': chosenPlayer['firstName']['default'],
-        'lastName': chosenPlayer['lastName']['default'],
-        'position': chosenPlayer['position'],
-        'fullTeamName': chosenPlayer['fullTeamName']['default'],
-        'teamLogo': chosenPlayer['teamLogo'],
-        'headshot': chosenPlayer['headshot'],
-        # Source stats for final season in seasonTotals dictionary
-        'games': chosenPlayer['seasonTotals'][-1]['gamesPlayed'],
-        'goals': chosenPlayer['seasonTotals'][-1]['goals'],
-        'assists': chosenPlayer['seasonTotals'][-1]['assists'],
-        'points': chosenPlayer['seasonTotals'][-1]['points'],
-        'penaltyMinutes': chosenPlayer['seasonTotals'][-1]['pim']
-    }
-    print(reqdData)
-
-
-# NOT DONE Add card to collection
-@app.route('/add_card', methods=['POST'])
-def add_card():
-    # Add the data to the DB
-    some_data = {'player_id': request.json["player_id"],
-                 'player_name': request.json["player_name"]}
-    print(some_data)
-    '''data needs to be packaging up in the http request, and then in this
-    function you would refer to that as request.json, with the data being in
-    the form of a dictionary, so you'd have request.json['player_id'] etc.
-    '''
-    # Add flash confirming card added
-    return redirect(url_for('index'))
 
 
 # NOT DONE (NOT MARKED), catch all for invalid URLs
