@@ -14,9 +14,8 @@ db = pymysql.connect(
     database=config.keys['db']
 )
 
-# The actual number of players in the DB as of 28/12/2023
-lenPlayers = 2190
 # The number of players I managed to import before an error (see README)
+# replace this with a SELECT COUNT(*) from all_players;
 storedPlayers = 115
 
 data = []
@@ -25,11 +24,21 @@ data = []
 # NOT DONE Home page
 @app.route('/', methods=['GET'])
 def index():
-    mycard = []
+    cursor = db.cursor()
+    # Generate a random player ID and retrieve the player from the DB
+    sql_count = '''SELECT COUNT(*) FROM collection'''
+    cursor.execute(sql_count)
+    num_rows = cursor.fetchone()[0]
+    rand_card = random.randint(1, num_rows)
+
+    sql_select = '''SELECT * FROM collection WHERE id = %s'''
+    cursor.execute(sql_select, rand_card)
+    player = cursor.fetchone()
     randcard = []
-    # load all players from collection DB, add dropdowns
     # load random player from all_players DB
-    return render_template('index.html', mycard=mycard, randcard=randcard)
+
+    return render_template('index.html',
+                           player=player, randcard=randcard)
 
 
 # TEMPLATE FOR ABOVE Return card from collection
@@ -38,7 +47,7 @@ def get_card(id):
     return jsonify(data[id])
 
 
-# retrieve all cards from collection DB
+# Retrieve all cards from collection DB
 @app.route('/collection', methods=['GET'])
 def get_cards():
     collection = []
@@ -50,6 +59,10 @@ def get_cards():
         pl = list(player)
         collection.append(pl)
     return render_template('collection.html', collection=collection)
+
+
+''' Do I need a route for play again to redirect to index? You need one for
+"Add Card" if you win, but you'd need another if the player doesn't win... '''
 
 
 # NOT DONE Update - What can I do for an update operation?
@@ -71,7 +84,7 @@ def update_card(index):
 def delete_card(id):
     cursor = db.cursor()
     sql_delete = '''DELETE FROM collection WHERE id = %s'''
-    cursor.exeter(sql_delete, id)
+    cursor.execute(sql_delete, id)
     # Add flash confirming deletion
     print('Card deleted.')
     return redirect(url_for('collection'))

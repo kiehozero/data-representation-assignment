@@ -16,23 +16,25 @@
 <div class='col-4 offset-1' id='card1'>
 	<div class='rounded border-dark'>
 		<!-- replace with DB-generated name -->
-		<h4>PLAYER NAME</h4>
+		<h4>
+			{{ player[2] }} {{ player[3] }}
+		</h4>
 
 		<!-- Photo section -->
 		<div class='picBox'>
-			<!-- replace with DB-generated image -->
-			<img height='300px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg/800px-Auston_Matthews_playing_with_the_Maple_Leafs_in_2022_%28Quintin_Soloviev%29.jpg'>
+				<h6>{{ player[4] }}, {{ player[5] }}</h6>
+			    <img class="img-fluid" src='{{ player[7] }}'>
 		</div>
 
 		<!-- Stats section -->
 		<div class='statBox d-none'>
 			<!-- DB-generated statistics here, with a button per item -->
 			<div class='row'>
-				<div class='stat-header'>Games Played: <button type='button' id="card_gp" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Goals: <button type='button' id="card_goals" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Assists: <button type='button' id="card_asts" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Points: <button type='button' id="card_pts" class='btn btn-info stat-select'>TBC</button></div>
-				<div class='stat-header'>Penalty Minutes: <button type='button' id="card_pim" class='btn btn-info stat-select'>TBC</button></div>
+				<div class='stat-header'>Games Played: <button type='button' id="card_gp" class='btn btn-info stat-select'>{{ player[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' id="card_goals" class='btn btn-info stat-select'>{{ player[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' id="card_asts" class='btn btn-info stat-select'>{{ player[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' id="card_pts" class='btn btn-info stat-select'>{{ player[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id="card_pim" class='btn btn-info stat-select'>{{ player[12] }}</button></div>
 			</div>
 		</div>
 
@@ -52,6 +54,8 @@
 	<div class='rounded border-dark'>
 		<!-- replace with API-generated name -->
 		<h4>PLAYER GENERATED NAME</h4>
+		<div class='none'><!-- here just to store the iD of the random player. In reality, can we pass
+			the query result that generates this card right through to the Add Card stage? --></div>
 
 		<!-- Photo section -->
 		<div class="picOppo">
