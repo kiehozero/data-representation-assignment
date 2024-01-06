@@ -108,7 +108,6 @@ $(document).ready(function(){
         } else if (card1id == 'card_b') {
             card2stat = $('#oppo_b').text()
             card2id = $('#oppo_b').attr('id')
-            /* BUGFIX: I hate JavaScript. Literally deleting a few semi-colons rectified this */
         } else if (card1id == 'card_c') {
             card2stat = $('#oppo_c').text()
             card2id = $('#oppo_c').attr('id')

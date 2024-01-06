@@ -11,6 +11,10 @@ body {
     font-weight: 400;
 }
 
+h4 span {
+    font-weight: bold;
+}
+
 /* Card divs */
 
 .holders {

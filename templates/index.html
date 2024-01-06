@@ -23,18 +23,18 @@
 		<!-- Photo section -->
 		<div class='picBox'>
 				<h6>{{ player_one[4] }}, {{ player_one[5] }}</h6>
-			    <img class="img-fluid" src='{{ player_one[7] }}'>
+			    <img class='img-fluid' src='{{ player_one[7] }}'>
 		</div>
 
 		<!-- Stats section -->
 		<div class='statBox d-none'>
 			<!-- DB-generated statistics here, with a button per item -->
 			<div class='row'>
-				<div class='stat-header'>Games Played: <button type='button' id="card_a" class='btn btn-info stat-select'>{{ player_one[8] }}</button></div>
-				<div class='stat-header'>Goals: <button type='button' id="card_b" class='btn btn-info stat-select'>{{ player_one[9] }}</button></div>
-				<div class='stat-header'>Assists: <button type='button' id="card_c" class='btn btn-info stat-select'>{{ player_one[10] }}</button></div>
-				<div class='stat-header'>Points: <button type='button' id="card_d" class='btn btn-info stat-select'>{{ player_one[11] }}</button></div>
-				<div class='stat-header'>Penalty Minutes: <button type='button' id="card_e" class='btn btn-info stat-select'>{{ player_one[12] }}</button></div>
+				<div class='stat-header'>Games Played: <button type='button' id='card_a' class='btn btn-info stat-select'>{{ player_one[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' id='card_b' class='btn btn-info stat-select'>{{ player_one[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' id='card_c' class='btn btn-info stat-select'>{{ player_one[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' id='card_d' class='btn btn-info stat-select'>{{ player_one[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id='card_e' class='btn btn-info stat-select'>{{ player_one[12] }}</button></div>
 			</div>
 		</div>
 
@@ -54,35 +54,36 @@
 <!-- Randomly-generated card -->
 <div class='col-4' id='card2'>
 	<div class='rounded border-dark'>
-		<h4>
-			<b>{{ player_two[2] }} {{ player_two[3] }}</b>
+		<h4 id='playerTwoHeader'>
+			<span id='two_two'>{{ player_two[2] }}</span> <span id='two_three'>{{ player_two[3] }}</span>
 		</h4>
-		<div class='none'><!-- here just to store the ID of the random player. In reality, can we pass
-			the query result that generates this card right through to the Add Card stage? --></div>
+		<!-- Hidden items that are needed if the card is pushed to collection DB -->
+		<div class='d-none' id='two_one'>{{ player_two[1] }}</div>
+		<div class='d-none' id='two_six'>{{ player_two[6] }}</div>
 
 		<!-- Photo section -->
-		<div class="picOppo">
-			<h6>{{ player_two[4] }}, {{ player_two[5] }}</h6>
-			<img class="img-fluid" src='{{ player_two[7] }}'></div>
+		<div class='picOppo'>
+			<h6>
+				<span id='two_four'>{{ player_two[4] }}</span>, <span id='two_five'>{{ player_two[5] }}</span>
+			</h6>
+			<img class="img-fluid" id='two_seven' src='{{ player_two[7] }}'></div>
 		</div>
 
 		<!-- Stats section -->
 		<div class='statOppo d-none'>
 			<!-- DB-generated statistics here, with a button per item -->
 			<div class='row'>
-				<div class='stat-header'>Games Played: <button type='button' id="oppo_a" class='btn btn-info oppo-select'>{{ player_one[8] }}</button></div>
-				<div class='stat-header'>Goals: <button type='button' id="oppo_b" class='btn btn-info oppo-select'>{{ player_two[9] }}</button></div>
-				<div class='stat-header'>Assists: <button type='button' id="oppo_c" class='btn btn-info oppo-select'>{{ player_two[10] }}</button></div>
-				<div class='stat-header'>Points: <button type='button' id="oppo_d" class='btn btn-info oppo-select'>{{ player_two[11] }}</button></div>
-				<div class='stat-header'>Penalty Minutes: <button type='button' id="oppo_e" class='btn btn-info oppo-select'>{{ player_two[12] }}</button></div>
+				<div class='stat-header'>Games Played: <button type='button' id='oppo_a' class='btn btn-info oppo-select'>{{ player_two[8] }}</button></div>
+				<div class='stat-header'>Goals: <button type='button' id='oppo_b' class='btn btn-info oppo-select'>{{ player_two[9] }}</button></div>
+				<div class='stat-header'>Assists: <button type='button' id='oppo_c' class='btn btn-info oppo-select'>{{ player_two[10] }}</button></div>
+				<div class='stat-header'>Points: <button type='button' id='oppo_d' class='btn btn-info oppo-select'>{{ player_two[11] }}</button></div>
+				<div class='stat-header'>Penalty Minutes: <button type='button' id='oppo_e' class='btn btn-info oppo-select'>{{ player_two[12] }}</button></div>
 			</div>
 		</div>
 
 	<!-- Button to toggle between picture and statistics -->
 	<button type='button' class='btn btn-dark card-flip d-none' id='flipOppo'>View stats</button>
-	<form action='{{ url_for("add_card") }}' method='post'>
-		<!-- JS HTTP req needs to gather data using button ids above the -->
-		<button class='btn btn-success d-none' id='addCard' type='submit'>Get this card</button>
-	</form>
+	<!-- JS HTTP req needs to gather data using button ids above the -->
+	<button class='btn btn-success d-none' id='addCard' type='submit'>Get this card</button>
 </div>
 {% endblock %}

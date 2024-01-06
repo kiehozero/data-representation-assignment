@@ -1,9 +1,8 @@
 from flask import (
-    flash, Flask, jsonify, redirect, render_template, request, url_for)
+    Flask, redirect, render_template, request, url_for)
 import config
 import pymysql
 import random
-import requests
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
@@ -40,42 +39,38 @@ def index():
     cursor.execute(all_select, rand_all)
     player_two = cursor.fetchone()
 
-    cursor.close()
-
     return render_template(
         'index.html',
         player_one=player_one, player_two=player_two)
 
 
 # NOT DONE Add card to collection
-@app.route('/add_card', methods=['POST'])
+@app.route('/', methods=['POST'])
 def add_card():
     # Add the data to the DB
-    some_data = {'player_id': request.json["player_id"],
-                 'player_name': request.json["player_name"]}
-    print(some_data)
-    '''data needs to be packaging up in the http request, and then in this
-    function you would refer to that as request.json, with the data being in
-    the form of a dictionary, so you'd have request.json['player_id'] etc.
-    '''
-    # Add flash confirming card added
-    return redirect(url_for('index'))
+    card = [
+        request.json['player_id'],
+        request.json['first_name'],
+        request.json['last_name'],
+        request.json['position'],
+        request.json['team'],
+        request.json['logo_url'],
+        request.json['headshot_url'],
+        request.json['gp'],
+        request.json['goals'],
+        request.json['assists'],
+        request.json['points'],
+        request.json['pim']
+    ]
 
-# Add required data to dictionary
-# reqdData = {
-    # 'playerId': player_two[1],
-    # 'first_name': player_two[2],
-    # 'last_name': player_two[3],
-    # 'position': player_two[4],
-    # 'team': player_two[5],
-    # 'logo_url': player_two[6],
-    # 'headshot_url': player_two['headshot'],
-    # 'games': player_two['seasonTotals'][-1]['gamesPlayed'],
-    # 'goals': player_two['seasonTotals'][-1]['goals'],
-    # 'assists': player_two['seasonTotals'][-1]['assists'],
-    # 'points': player_two['seasonTotals'][-1]['points'],
-    # 'penaltyMinutes': player_two['seasonTotals'][-1]['pim']
-    # }
+    cursor = db.cursor()
+    card_insert = '''INSERT INTO collection (player_id, first_name,
+        last_name, position, team, logo_url, headshot_url, gp, goals, assists,
+        points, pim) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
+    cursor.execute(card_insert, card)
+
+    db.commit()
+    print("1 record inserted, ID:", cursor.lastrowid)
 
 
 # Retrieve all cards from collection DB
@@ -104,13 +99,6 @@ def delete_card(id):
     # Add flash confirming deletion
     print('Card deleted.')
     return redirect(url_for('collection'))
-
-
-# NOT DONE (NOT MARKED), catch all for invalid URLs
-@app.route('/invalid', methods=['GET'])
-def invalid():
-    # need a catch-all for invalid URLs
-    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

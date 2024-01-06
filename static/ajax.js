@@ -1,22 +1,31 @@
 // File for containing AJAX operations
 
-function callPlayer() {
-    var statUrl = 'https://api-web.nhle.com/v1/player/';
-    var player = 8482201; /*need to return a player id from players DB */
-    var landing = '/landing';
-    var url = statUrl + player + landing;
+function addCard() {
+    won_card = {}
+    won_card["player_id"] = $('#two_one').text()
+    won_card["first_name"] = $('#two_two').text()
+    won_card["last_name"] = $('#two_three').text()
+    won_card["position"] = $('#two_four').text()
+    won_card["team"] = $('#two_five').text()
+    won_card["logo_url"] = $('#two_six').text()
+    won_card["headshot_url"] = $('#two_seven').text()
+    won_card["gp"] = $('#oppo_b').text()
+    won_card["goals"] = $('#oppo_b').text()
+    won_card["assists"] = $('#oppo_c').text()
+    won_card["points"] = $('#oppo_d').text()
+    won_card["pim"] = $('#oppo_e').text()
+
     $.ajax({
-        "url": url,
-        "method": "GET",
-        "data": "",
-        "dataType": "JSONP",
-        "success": function(playerData) {
-            console.log(playerData);
+         'url': 'http://127.0.0.1:5000/',
+        'method': 'POST',
+        'data': JSON.stringify(won_card),
+        'dataType': "JSON",
+        'success': function(won_card) {
+            console.log(won_card);
         },
-        "error": function(xhr, status, error) {
+        'content-type': "application/json; charset=utf-8",
+        'error': function(xhr, status, error) {
             console.log("error: " + status + "msg: " + error);
         }
     });
 }
-
-/* need an initial API call for the player name and card, then a second for stats. Or could just load it all in one go, as the stats box is not displayed anyway */

@@ -66,12 +66,14 @@ def addPlayerStats():
         '''Add required items to list and push to MySQL Default items selected
         where multiple languages are available. Source stats for final season
         in seasonTotals dictionary.'''
-        reqdData = [playerData['playerId'], playerData['firstName']['default'],
+        reqdData = [playerData['playerId'],
+                    playerData['firstName']['default'],
                     playerData['lastName']['default'],
                     playerData['position'],
                     # Error on this item documented in README
                     playerData['fullTeamName']['default'],
-                    playerData['teamLogo'], playerData['headshot'],
+                    playerData['teamLogo'],
+                    playerData['headshot'],
                     playerData['seasonTotals'][-1]['gamesPlayed'],
                     playerData['seasonTotals'][-1]['goals'],
                     playerData['seasonTotals'][-1]['assists'],

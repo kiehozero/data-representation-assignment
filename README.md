@@ -75,6 +75,8 @@ Zmalski (2023) "NHL API Reference" [Github](https://github.com/Zmalski/NHL-API-R
 
 [Bootstrap documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 \
+[Favicon Generator](https://favicon.io/favicon-converter/)
+\
 [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/)
 \
 [Font Awesome](https://fontawesome.com/)
@@ -99,34 +101,30 @@ Beatty, A. (2003) "Data Representation" [Github](https://github.com/andrewbeatty
 \
 [GitHub CoPilot](https://copilot.github.com/)
 \
-[Getting a Favicon to work in Flask](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
+Flask documentation (2023) "Accessing request data in Flask". [Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#accessing-request-data)
 \
-[Templates in Flask](https://flask.palletsprojects.com/en/3.0.x/tutorial/templates/)
+Flask documentation (2023) "Flash messages in Flask". [Flask](https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/)
 \
-[Flash messages in Flask](https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/)
+Flask documentation (2023) "Getting a Favicon to work in Flask". [Flask](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
 \
-[Accessing request data in Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#accessing-request-data)
+Flask documentation (2023) "Templates in Flask". [Flask](https://flask.palletsprojects.com/en/3.0.x/tutorial/templates/)
 \
-[Upper Deck E-Pack](https://www.upperdeckepack.com/)
+Nishant, V. (2020) "Flask to MySQL setup". [AskPython](https://www.askpython.com/python-modules/flask/flask-mysql-database)
 \
-[Favicon Generator](https://favicon.io/favicon-converter/)
-\
-[Flask to MySQL setup](https://www.askpython.com/python-modules/flask/flask-mysql-database)
-\
-[jQuery text() method](https://api.jquery.com/text/)
-\
-[jQuery toggle text](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
+jQuery Documentation (2023) "jQuery text() method". [jQuery](https://api.jquery.com/text/)
 \
 Saint, S. (2022) "Awayday". [Github](https://github.com/kiehozero/away-day)
 \
 Saint, S. (2022) "Awayday". [Github Pages](https://kiehozero.github.io/away-day/index.html)
 \
-Technical Panchayat (2023) [Flask and PyMySQL: Introduction](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
+Technical Panchayat (2023) "Flask and PyMySQL: Introduction". [Medium](https://medium.com/@technicalpanchayat18/flask-pymysql-introduction-ae00ab1821f)
 \
-Technical Panchayat (2023) [Flask and PyMySQL: CRUD Operations](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
+Technical Panchayat (2023) "Flask and PyMySQL: CRUD Operations". [Medium](https://medium.com/@technicalpanchayat18/flask-pymysql-crud-operations-93c279b84c4c)
 \
 User:'instanceof me' (2010) "How can I get the ID of an element using jQuery?" [StackOverflow](https://stackoverflow.com/questions/3239598/how-can-i-get-the-id-of-an-element-using-jquery#3239600)
 \
 W3Schools (2023) "jQuery attr() method". [W3Schools](https://www.w3schools.com/jquery/html_attr.asp)
+\
+W3Schools (2023) "jQuery toggle text". [W3Schools](https://www.w3schools.com/howto/howto_js_toggle_text.asp)
 \
 W3Schools (2023) "jQuery tutorial". [W3Schools](https://www.w3schools.com/jquery/default.asp)
