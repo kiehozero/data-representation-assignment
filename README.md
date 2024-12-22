@@ -25,7 +25,7 @@ Plus (each point 0-10%):
 
 The final product in this assignment is a Top Trumps-style game that takes data from the statistical records of the National Hockey League. The League pushes a large amount of in-game and aggregated data to a number of APIs, hosted at [NHL Stats](https://www.nhl.com/stats/) and [NHL Edge](https://edge.nhl.com/). For the sake of this assignment, I accessed the active player API ([endpoint](https://search.d3.nhle.com/api/v1/search/player?q=*&culture=en-us&limit=6000)) and the individual statistical player database ([endpoint](https://api-web.nhle.com/v1/player/8477846/landing)). The inspiration for this project originally came from [Upper Deck E-Pack](https://www.upperdeckepack.com/), a website where users can collect and trade sports and entertainment trading cards, after I attended an ice hockey game in Sweden and scanned a QR code for some free cards.
 
-In the game itself, a MySQL table contains a number of pre-loaded players sourced from the statistical database endpoint above, and a user can pick which particular card and statistic they wish to play. A second  table in the same database contains a larger number of players, one of which is selected at random and presented visually as a second card. If the user's chosen card has a higher number in the chosen statistic, the user wins the other card and can choose whether to add it to the database.
+In the game itself, a MySQL table contains a number of pre-loaded players sourced from the statistical database endpoint above, and a user can pick which particular card and statistic they wish to play. A second table in the same database contains a larger number of players, one of which is selected at random and presented visually as a second card. If the user's chosen card has a higher number in the chosen statistic, the user wins the other card and can choose whether to add it to the database.
 
 ## Technical Aspects
 
@@ -41,7 +41,7 @@ I've noticed for some players that 'position' is sometimes listed as 'positionCo
 
 There are also differences between column names in different tables, and some players taken from the active player list who do not show up in the player stats engine when their ID code is showing up. Included in the reference section are some discussions and ad-hoc documentation that third-party users noticed themselves, some of these discussions were of enormous use in getting this project off the ground, as the NHL have yet to release officialy documentation.
 
-## Proposed Improvements and Bugfixess
+## Proposed Improvements and Bugfixes
 
 At present the addAllPlayers function is run on an ad-hoc basis. An improvement here would be to implement a delete-and-insert process to perioducally recreate the table with the latest available players. If the script at present is run, it will simply add the same values, while deleting all records and starting again creates a new set of primary keys. At present, no records are updated from the API once they are added to the database for this project, so as the season progresses the likelihood of a user winning games will decrease, so a call to the API to replace stored players would become crucial.
 
